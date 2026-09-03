@@ -1,0 +1,60 @@
+schema_version: "1.0"
+# Ogni voce seleziona una regola del catalogo generale e dichiara soltanto le
+# condizioni informative da materializzare. Gli esiti attesi sono separati.
+rules:
+  - rule_id: RULE-ID-AM-01
+    cases: [positive, known_violation, without_evidence]
+  - rule_id: RULE-ID-AM-02
+    cases: [positive, known_violation, without_evidence]
+  - rule_id: RULE-ID-AM-03-E
+    cases: [positive, known_violation, without_evidence, important_profile]
+  - rule_id: RULE-ID-AM-04
+    cases: [positive, known_violation, without_evidence]
+  - rule_id: RULE-ID-RA-01
+    cases: [positive, known_violation, without_evidence]
+  - rule_id: RULE-ID-RA-01-E
+    cases: [positive, known_violation, without_evidence, important_profile]
+  - rule_id: RULE-ID-RA-08
+    cases: [positive, known_violation, without_evidence, accepted_risk]
+  - rule_id: RULE-ID-RA-08-E
+    cases: [positive, known_violation, without_evidence, important_profile]
+  - rule_id: RULE-PR-AA-01
+    cases: [positive, known_violation, without_evidence]
+  - rule_id: RULE-PR-AA-03
+    cases: [positive, known_violation, without_evidence]
+  - rule_id: RULE-PR-AA-05
+    cases: [positive, known_violation, without_evidence, mixed_conditions]
+    partial_false: [account-admin.least_privilege]
+  - rule_id: RULE-PR-AA-06
+    cases: [positive, known_violation, without_evidence]
+  - rule_id: RULE-PR-DS-01
+    cases: [positive, known_violation, without_evidence]
+  - rule_id: RULE-PR-DS-02
+    cases: [positive, known_violation, without_evidence]
+  - rule_id: RULE-PR-DS-11
+    cases: [positive, known_violation, without_evidence, mixed_conditions]
+    partial_false: [backup-web.offline_copy]
+  - rule_id: RULE-PR-DS-11-E
+    cases: [positive, known_violation, without_evidence, important_profile]
+  - rule_id: RULE-PR-PS-01-E
+    cases: [positive, known_violation, without_evidence, important_profile, active_exception]
+  - rule_id: RULE-PR-PS-02
+    cases: [positive, known_violation, without_evidence]
+  - rule_id: RULE-PR-PS-02-E
+    cases: [positive, known_violation, without_evidence, important_profile]
+  - rule_id: RULE-PR-PS-03-E
+    cases: [positive, known_violation, without_evidence, important_profile]
+  - rule_id: RULE-PR-PS-04
+    cases: [positive, known_violation, without_evidence, mixed_conditions]
+    partial_false: [logs_centralized]
+  - rule_id: RULE-PR-IR-01
+    cases: [positive, known_violation, without_evidence]
+  - rule_id: RULE-PR-IR-03-E
+    cases: [positive, known_violation, without_evidence, important_profile]
+  - rule_id: RULE-DE-CM-01
+    cases: [positive, known_violation, without_evidence, mixed_conditions]
+    partial_false: [cap-ids.monitored]
+  - rule_id: RULE-DE-CM-01-E
+    cases: [positive, known_violation, without_evidence, important_profile]
+  - rule_id: RULE-DE-CM-09
+    cases: [positive, known_violation, without_evidence]

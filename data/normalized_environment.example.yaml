@@ -1,0 +1,269 @@
+schema_version: "2.0"
+dataset:
+  id: dataset-acn-technical-2
+  name: Ambiente tecnico ACN di esempio
+  generated_at: "2026-08-14T09:00:00+02:00"
+  description: Dataset sintetico per il catalogo tecnico ACN; non costituisce una PoC normativa.
+  source_systems: [inventory, vulnerability-manager, iam, backup, monitoring]
+organization:
+  id: org-demo
+  name: Organizzazione dimostrativa
+  nis_profile: essential
+  risk_assessment_reference: RISK-2026-01
+  acn_specification: "Determinazione ACN 379907/2025 - specifiche di base vigenti"
+responsible_parties:
+  - {id: owner-ops, name: Responsabile sistemi, role: system-owner, contact_reference: role://system-owner, provenance_ids: [prov-governance]}
+processes:
+  - {id: proc-core, name: Servizio essenziale demo, description: Processo sintetico, criticality: critical, asset_ids: [asset-web], data_object_ids: [data-core], owner_id: owner-ops, provenance_ids: [prov-governance]}
+data_objects:
+  - id: data-core
+    name: Dati operativi
+    classification: restricted
+    description: Categoria sintetica senza dati personali reali
+    encrypted_at_rest: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}
+    encrypted_in_transit: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}
+    removable_media: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: false, provenance_ids: [prov-config]}
+    removable_media_encrypted: {status: not_applicable, value: null, provenance_ids: [prov-config]}
+    encryption_configuration: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: AES-256 managed keys, provenance_ids: [prov-config]}
+    asset_ids: [asset-web]
+    provenance_ids: [prov-config]
+assets:
+  - id: asset-web
+    name: Sistema NIS rilevante
+    asset_type: server
+    description: Sistema sintetico usato per esercitare il catalogo ACN 2.0
+    hostname: core.example.invalid
+    ip_addresses: [192.0.2.10]
+    mac_addresses: []
+    environment: production
+    network_segment: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: protected-core, provenance_ids: [prov-inventory]}
+    internet_exposed: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-inventory]}
+    nis_relevant: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-governance]}
+    criticality: critical
+    impact_level: critical
+    exposure_level: high
+    risk_assessment_reference: RISK-2026-01
+    lifecycle_status: active
+    operating_system: ExampleOS
+    operating_system_version: "12"
+    support_status: supported
+    owner_id: owner-ops
+    process_ids: [proc-core]
+    data_object_ids: [data-core]
+    service_ids: [svc-https]
+    evidence_ids: [ev-asset, ev-software, ev-flow, ev-provider, ev-scan, ev-treatment, ev-vuln-management, ev-access-review, ev-access-config, ev-physical, ev-encryption, ev-backup, ev-restore, ev-system, ev-patch, ev-maintenance, ev-log, ev-network, ev-emergency, ev-monitoring, ev-endpoint]
+    provenance_ids: [prov-inventory, prov-config, prov-governance]
+    properties:
+      hardware_inventory_complete: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-inventory]}
+      provider_services_inventory_complete: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-governance]}
+      extended_vulnerability_assessment_performed: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-scan]}
+      vulnerability_advisories_monitored: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-scan]}
+      critical_software_supplier_channels_monitored: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-scan]}
+      physical_protection_documented: {status: unknown, unknown_cause: not_declared, value: null, provenance_ids: []}
+      hardening_baseline_applied: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}
+      maintenance_logged: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}
+      secure_disposal_documented: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-governance]}
+      admin_remote_access_logging: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}
+      logs_protected: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}
+      logs_centralized: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: false, provenance_ids: [prov-config]}
+      log_retention_within_plan: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-governance]}
+      remote_access_registry_complete: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-governance]}
+      remote_access_protected: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}
+      firewall_enabled: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}
+      anomaly_thresholds_configured: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}
+  - id: asset-db
+    name: Sistema fuori perimetro NIS
+    asset_type: database
+    description: Sistema escluso centralmente tramite nis_relevant=false
+    hostname: auxiliary.example.invalid
+    ip_addresses: [192.0.2.20]
+    mac_addresses: []
+    environment: production
+    network_segment: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: auxiliary, provenance_ids: [prov-inventory]}
+    internet_exposed: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: false, provenance_ids: [prov-inventory]}
+    nis_relevant: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: false, provenance_ids: [prov-governance]}
+    criticality: medium
+    impact_level: medium
+    exposure_level: low
+    risk_assessment_reference: RISK-2026-01
+    lifecycle_status: active
+    support_status: supported
+    owner_id: owner-ops
+    process_ids: []
+    data_object_ids: []
+    service_ids: []
+    evidence_ids: []
+    provenance_ids: [prov-inventory, prov-governance]
+    properties: {}
+services:
+  - id: svc-https
+    asset_id: asset-web
+    name: HTTPS
+    port: 443
+    protocol: tcp
+    transport_protocol: tcp
+    application_protocol: https
+    product: ExampleWeb
+    version: "5.1"
+    authorized: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-inventory]}
+    internet_exposed: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-inventory]}
+    encrypted: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}
+    tls_enabled: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}
+    tls_versions: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: [TLSv1.3], provenance_ids: [prov-config]}
+    certificate_expiration: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: "2027-08-14T00:00:00Z", provenance_ids: [prov-config]}
+    obsolete_protocol: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: false, provenance_ids: [prov-config]}
+    encryption_configuration: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: TLSv1.3, provenance_ids: [prov-config]}
+    cryptographic_baseline_id: CRYPTO-BASELINE-2026.1
+    evidence_ids: [ev-encryption]
+    provenance_ids: [prov-inventory, prov-config]
+software_components:
+  - id: software-web
+    asset_id: asset-web
+    name: ExampleWeb
+    version: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: "5.1", provenance_ids: [prov-inventory]}
+    authorized: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-governance]}
+    support_status: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: unsupported, provenance_ids: [prov-patch]}
+    security_update_status: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: overdue_against_risk_plan, provenance_ids: [prov-patch]}
+    last_security_update_at: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: "2026-06-01T00:00:00Z", provenance_ids: [prov-patch]}
+    critical_update_tested: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: false, provenance_ids: [prov-patch]}
+    evidence_ids: [ev-software, ev-patch]
+    provenance_ids: [prov-inventory, prov-patch]
+accounts:
+  - id: account-admin
+    asset_id: asset-web
+    account_type: administrator
+    individual: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-access]}
+    authorized: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-access]}
+    privileged: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-access]}
+    remote_access: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-access]}
+    mfa_enabled: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: false, provenance_ids: [prov-access]}
+    credentials_managed: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-access]}
+    least_privilege: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-access]}
+    separate_admin_account: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-access]}
+    last_reviewed_at: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: "2026-08-01T00:00:00Z", provenance_ids: [prov-access]}
+    evidence_ids: [ev-access-review, ev-access-config]
+    provenance_ids: [prov-access]
+network_flows:
+  - id: flow-https
+    asset_id: asset-web
+    source: internet
+    destination: asset-web
+    direction: inbound
+    transport_protocol: tcp
+    application_protocol: https
+    port: 443
+    authorized: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-network]}
+    encrypted: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-network]}
+    evidence_ids: [ev-flow]
+    provenance_ids: [prov-network]
+backups:
+  - id: backup-web
+    asset_id: asset-web
+    plan_reference: BACKUP-PLAN-2026
+    last_success_at: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: "2026-08-14T03:00:00Z", provenance_ids: [prov-backup]}
+    frequency_within_plan: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-backup]}
+    offline_copy: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-backup]}
+    protected_copy: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-backup]}
+    restore_test_at: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: "2026-07-15T00:00:00Z", provenance_ids: [prov-backup]}
+    restore_test_successful: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: false, provenance_ids: [prov-backup]}
+    evidence_ids: [ev-backup, ev-restore]
+    provenance_ids: [prov-backup]
+security_capabilities:
+  - {id: cap-emergency, asset_id: asset-web, capability_type: emergency_communications, enabled: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, configured: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, maintained: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, monitored: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, configuration_reference: EMERGENCY-COMMS-1, evidence_ids: [ev-emergency], provenance_ids: [prov-config]}
+  - {id: cap-ids, asset_id: asset-web, capability_type: intrusion_detection, enabled: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, configured: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, maintained: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, monitored: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, evidence_ids: [ev-monitoring], provenance_ids: [prov-config]}
+  - {id: cap-filter, asset_id: asset-web, capability_type: traffic_filter, enabled: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, configured: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, maintained: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, monitored: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, evidence_ids: [ev-monitoring], provenance_ids: [prov-config]}
+  - {id: cap-access-monitor, asset_id: asset-web, capability_type: access_monitoring, enabled: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, configured: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, maintained: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, monitored: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, evidence_ids: [ev-monitoring], provenance_ids: [prov-config]}
+  - {id: cap-endpoint, asset_id: asset-web, capability_type: endpoint_protection, enabled: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, configured: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, maintained: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, monitored: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-config]}, evidence_ids: [ev-endpoint], provenance_ids: [prov-config]}
+technical_exceptions:
+  - id: exception-hardening
+    asset_id: asset-web
+    control_id: CTRL-PR-PS-01-E
+    rationale: Un componente legacy impedisce l'applicazione completa della baseline.
+    compensating_measure: Segmentazione e monitoraggio rafforzato.
+    residual_risk: high
+    approval_reference: RISK-ACCEPTANCE-2026-04
+    valid_until: "2026-12-31T23:59:59Z"
+    evidence_ids: [ev-system]
+    provenance_ids: [prov-governance]
+vulnerabilities:
+  - id: vuln-web
+    asset_id: asset-web
+    service_id: svc-https
+    cve: CVE-2026-12345
+    title: Vulnerabilità sintetica
+    description: Record dimostrativo non riferito a un prodotto reale
+    severity: high
+    cvss_score: 8.0
+    component: ExampleWeb
+    detected_at: "2026-08-12T00:00:00Z"
+    patch_available: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: true, provenance_ids: [prov-scan]}
+    remediation_status: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: in_progress, provenance_ids: [prov-patch]}
+    remediation_due_date: "2026-08-20T00:00:00Z"
+    accepted_exception: {status: known, observation_type: declared, observed_at: "2026-08-14T09:00:00+02:00", value: false, provenance_ids: [prov-governance]}
+    evidence_ids: [ev-scan, ev-treatment]
+    provenance_ids: [prov-scan, prov-patch]
+evidences:
+  - {id: ev-asset, evidence_type: asset_inventory, title: Inventario asset, description: Snapshot inventario, source: CMDB, source_category: asset_internal, collected_at: "2026-08-14T06:00:00Z", valid_until: "2026-09-14T00:00:00Z", reliability: high, content: {}, asset_ids: [asset-web], control_ids: [CTRL-ID-AM-01], provenance_ids: [prov-inventory]}
+  - {id: ev-software, evidence_type: software_inventory, title: Inventario software, description: Snapshot componenti, source: CMDB, source_category: asset_internal, collected_at: "2026-08-14T06:00:00Z", valid_until: "2027-12-31T23:59:59Z", reliability: high, content: {}, asset_ids: [asset-web], control_ids: [CTRL-ID-AM-02, CTRL-PR-PS-02], provenance_ids: [prov-inventory]}
+  - {id: ev-flow, evidence_type: network_flow_inventory, title: Flussi autorizzati, description: Export regole, source: network-manager, source_category: asset_internal, collected_at: "2026-08-14T06:00:00Z", valid_until: "2027-12-31T23:59:59Z", reliability: high, content: {}, asset_ids: [asset-web], control_ids: [CTRL-ID-AM-03-E], provenance_ids: [prov-network]}
+  - {id: ev-provider, evidence_type: provider_service_inventory, title: Servizi fornitori, description: Elenco dipendenze, source: service-catalog, source_category: declared, collected_at: "2026-08-13T00:00:00Z", valid_until: "2027-12-31T23:59:59Z", reliability: medium, content: {}, asset_ids: [asset-web], control_ids: [CTRL-ID-AM-04], provenance_ids: [prov-governance]}
+  - {id: ev-scan, evidence_type: vulnerability_scan, title: Scansione autenticata, description: Scan corrente, source: scanner, source_category: asset_internal, collected_at: "2026-08-12T00:00:00Z", valid_until: "2026-09-12T00:00:00Z", reliability: high, content: {activity_description: "Vulnerability assessment autenticato", outcomes: "Relazione prodotta", vulnerabilities: [vuln-web], impact_levels: [high]}, asset_ids: [asset-web], vulnerability_ids: [vuln-web], control_ids: [CTRL-ID-RA-01, CTRL-ID-RA-01-E, CTRL-ID-RA-08], provenance_ids: [prov-scan]}
+  - {id: ev-treatment, evidence_type: vulnerability_treatment, title: Registro trattamento, description: Stato remediation, source: vulnerability-manager, source_category: asset_internal, collected_at: "2026-08-13T00:00:00Z", valid_until: "2027-12-31T23:59:59Z", reliability: high, content: {}, asset_ids: [asset-web], vulnerability_ids: [vuln-web], control_ids: [CTRL-ID-RA-08], provenance_ids: [prov-patch]}
+  - {id: ev-vuln-management, evidence_type: vulnerability_management, title: Fonti avvisi, description: Configurazione monitoraggio, source: vulnerability-manager, source_category: asset_internal, collected_at: "2026-08-13T00:00:00Z", valid_until: "2027-12-31T23:59:59Z", reliability: medium, content: {}, asset_ids: [asset-web], control_ids: [CTRL-ID-RA-01, CTRL-ID-RA-08, CTRL-ID-RA-08-E], provenance_ids: [prov-scan]}
+  - {id: ev-access-review, evidence_type: access_review, title: Revisione accessi, description: Export utenze, source: IAM, source_category: asset_internal, collected_at: "2026-08-01T00:00:00Z", valid_until: "2027-12-31T23:59:59Z", reliability: high, content: {}, asset_ids: [asset-web], control_ids: [CTRL-PR-AA-01], provenance_ids: [prov-access]}
+  - {id: ev-access-config, evidence_type: access_configuration, title: Configurazione accessi, description: Stato MFA privilegi, source: IAM, source_category: asset_internal, collected_at: "2026-08-13T00:00:00Z", valid_until: "2027-12-31T23:59:59Z", reliability: high, content: {}, asset_ids: [asset-web], control_ids: [CTRL-PR-AA-03, CTRL-PR-AA-05], provenance_ids: [prov-access]}
+  - {id: ev-physical, evidence_type: physical_security, title: Protezione fisica, description: Evidenza da validare, source: facilities, source_category: declared, collected_at: "2026-08-01T00:00:00Z", valid_until: "2027-12-31T23:59:59Z", reliability: medium, content: {}, asset_ids: [asset-web], control_ids: [CTRL-PR-AA-06], provenance_ids: [prov-governance]}
+  - {id: ev-encryption, evidence_type: encryption_configuration, title: Cifratura, description: Configurazione dati e servizi, source: configuration-manager, source_category: asset_internal, collected_at: "2026-08-13T00:00:00Z", valid_until: "2027-12-31T23:59:59Z", reliability: high, content: {baseline_id: CRYPTO-BASELINE-2026.1}, asset_ids: [asset-web], service_ids: [svc-https], control_ids: [CTRL-PR-DS-01, CTRL-PR-DS-02], provenance_ids: [prov-config]}
+  - {id: ev-backup, evidence_type: backup_record, title: Registro backup, description: Esecuzioni e copie, source: backup-manager, source_category: asset_internal, collected_at: "2026-08-14T03:00:00Z", valid_until: "2027-12-31T23:59:59Z", reliability: high, content: {plan_reference: BACKUP-PLAN-2026}, asset_ids: [asset-web], control_ids: [CTRL-PR-DS-11, CTRL-PR-DS-11-E], provenance_ids: [prov-backup]}
+  - {id: ev-restore, evidence_type: restore_test, title: Prova di ripristino, description: Ultimo test, source: backup-manager, source_category: asset_internal, collected_at: "2026-07-15T00:00:00Z", valid_until: "2027-12-31T23:59:59Z", reliability: high, content: {}, asset_ids: [asset-web], control_ids: [CTRL-PR-DS-11-E], provenance_ids: [prov-backup]}
+  - {id: ev-system, evidence_type: system_configuration, title: Configurazione sistema, description: Baseline e deroga, source: configuration-manager, source_category: asset_internal, collected_at: "2026-08-13T00:00:00Z", valid_until: "2027-12-31T23:59:59Z", reliability: high, content: {}, asset_ids: [asset-web], control_ids: [CTRL-PR-PS-01-E], provenance_ids: [prov-config]}
+  - {id: ev-patch, evidence_type: patch_record, title: Registro patch, description: Stato rispetto al piano, source: patch-manager, source_category: asset_internal, collected_at: "2026-08-13T00:00:00Z", valid_until: "2027-12-31T23:59:59Z", reliability: high, content: {risk_plan: RISK-2026-01}, asset_ids: [asset-web], control_ids: [CTRL-PR-PS-02, CTRL-PR-PS-02-E], provenance_ids: [prov-patch]}
+  - {id: ev-maintenance, evidence_type: maintenance_record, title: Manutenzione e dismissione, description: Registro tecnico, source: configuration-manager, source_category: asset_internal, collected_at: "2026-08-13T00:00:00Z", valid_until: "2027-12-31T23:59:59Z", reliability: medium, content: {}, asset_ids: [asset-web], control_ids: [CTRL-PR-PS-03-E], provenance_ids: [prov-config]}
+  - {id: ev-log, evidence_type: log_configuration, title: Configurazione logging, description: Eventi protezione e retention, source: log-manager, source_category: asset_internal, collected_at: "2026-08-13T00:00:00Z", valid_until: "2027-12-31T23:59:59Z", reliability: high, content: {retention_plan: LOG-PLAN-2026}, asset_ids: [asset-web], control_ids: [CTRL-PR-PS-04], provenance_ids: [prov-config]}
+  - {id: ev-network, evidence_type: network_security, title: Accesso remoto e firewall, description: Configurazione osservata, source: network-manager, source_category: asset_internal, collected_at: "2026-08-13T00:00:00Z", valid_until: "2027-12-31T23:59:59Z", reliability: high, content: {}, asset_ids: [asset-web], control_ids: [CTRL-PR-IR-01], provenance_ids: [prov-network]}
+  - {id: ev-emergency, evidence_type: emergency_communications, title: Comunicazioni emergenza, description: Capacità osservata, source: crisis-platform, source_category: asset_internal, collected_at: "2026-08-01T00:00:00Z", valid_until: "2027-12-31T23:59:59Z", reliability: medium, content: {}, asset_ids: [asset-web], control_ids: [CTRL-PR-IR-03-E], provenance_ids: [prov-config]}
+  - {id: ev-monitoring, evidence_type: monitoring_configuration, title: Monitoraggio rete, description: IDS filtri e accessi, source: monitoring-platform, source_category: asset_internal, collected_at: "2026-08-13T00:00:00Z", valid_until: "2027-12-31T23:59:59Z", reliability: high, content: {}, asset_ids: [asset-web], control_ids: [CTRL-DE-CM-01, CTRL-DE-CM-01-E], provenance_ids: [prov-config]}
+  - {id: ev-endpoint, evidence_type: endpoint_protection, title: Protezione endpoint, description: Stato capacità, source: endpoint-platform, source_category: asset_internal, collected_at: "2026-08-13T00:00:00Z", valid_until: "2027-12-31T23:59:59Z", reliability: high, content: {}, asset_ids: [asset-web], control_ids: [CTRL-DE-CM-09], provenance_ids: [prov-config]}
+requirements: []
+controls:
+  - {id: CTRL-ID-AM-01, requirement_id: REQ-ID-AM-01, title: Inventario hardware, description: Completezza del record asset., technical_area: asset_management, applicable_asset_types: &alltypes [server, workstation, network_device, application, database, cloud_service, storage, virtual_machine, container_host, security_device, other], required_properties: [asset.hardware_inventory_complete], required_evidence_types: [asset_inventory], applicable_profiles: &both [important, essential], relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-ID-AM-01]}
+  - {id: CTRL-ID-AM-02, requirement_id: REQ-ID-AM-02, title: Inventario software e servizi, description: Componenti software qualificati., technical_area: asset_management, applicable_asset_types: *alltypes, required_properties: [software_component.version, software_component.authorized], required_evidence_types: [software_inventory], applicable_profiles: *both, relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-ID-AM-02]}
+  - {id: CTRL-ID-AM-03-E, requirement_id: REQ-ID-AM-03-E, title: Inventario flussi di rete, description: Flussi di rete qualificati., technical_area: asset_management, applicable_asset_types: *alltypes, required_properties: [network_flow.authorized], required_evidence_types: [network_flow_inventory], applicable_profiles: &essential [essential], relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-ID-AM-03-E]}
+  - {id: CTRL-ID-AM-04, requirement_id: REQ-ID-AM-04, title: Servizi fornitori, description: Dipendenze tecniche dai fornitori., technical_area: supply_chain_technical, applicable_asset_types: *alltypes, required_properties: [asset.provider_services_inventory_complete], required_evidence_types: [provider_service_inventory], applicable_profiles: *both, relevant_system_required: true, verification_mode: evidence_assisted, rule_ids: [RULE-ID-AM-04]}
+  - {id: CTRL-ID-RA-01, requirement_id: REQ-ID-RA-01, title: Identificazione vulnerabilità, description: Monitoraggio delle fonti pertinenti., technical_area: vulnerability_management, applicable_asset_types: *alltypes, required_properties: [asset.vulnerability_advisories_monitored], required_evidence_types: [vulnerability_management], applicable_profiles: *both, relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-ID-RA-01]}
+  - {id: CTRL-ID-RA-01-E, requirement_id: REQ-ID-RA-01-E, title: Assessment approfondito, description: Attività aggiuntive essenziali., technical_area: vulnerability_management, applicable_asset_types: *alltypes, required_properties: [asset.extended_vulnerability_assessment_performed], required_evidence_types: [vulnerability_scan], applicable_profiles: *essential, relevant_system_required: true, verification_mode: evidence_assisted, rule_ids: [RULE-ID-RA-01-E]}
+  - {id: CTRL-ID-RA-08, requirement_id: REQ-ID-RA-08, title: Trattamento vulnerabilità, description: Monitoraggio fonti e remediation o mitigazione., technical_area: vulnerability_management, applicable_asset_types: *alltypes, required_properties: [asset.vulnerability_advisories_monitored, vulnerability.remediation_status], required_evidence_types: [vulnerability_management, vulnerability_treatment], applicable_profiles: *both, relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-ID-RA-08]}
+  - {id: CTRL-ID-RA-08-E, requirement_id: REQ-ID-RA-08-E, title: Canali fornitori critici, description: Monitoraggio dei canali dei fornitori del software critico., technical_area: vulnerability_management, applicable_asset_types: *alltypes, required_properties: [asset.critical_software_supplier_channels_monitored], required_evidence_types: [vulnerability_management], applicable_profiles: *essential, relevant_system_required: true, verification_mode: evidence_assisted, rule_ids: [RULE-ID-RA-08-E]}
+  - {id: CTRL-PR-AA-01, requirement_id: REQ-PR-AA-01, title: Identità e credenziali, description: Utenze qualificate e revisionate., technical_area: identity_access, applicable_asset_types: *alltypes, required_properties: [account.individual, account.authorized, account.credentials_managed], required_evidence_types: [access_review], applicable_profiles: *both, relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-PR-AA-01]}
+  - {id: CTRL-PR-AA-03, requirement_id: REQ-PR-AA-03, title: MFA basata sul rischio, description: MFA per utenze privilegiate o remote pertinenti., technical_area: identity_access, applicable_asset_types: *alltypes, required_properties: [account.mfa_enabled], required_evidence_types: [access_configuration], applicable_profiles: *both, relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-PR-AA-03]}
+  - {id: CTRL-PR-AA-05, requirement_id: REQ-PR-AA-05, title: Minimo privilegio, description: Separazione utenze amministrative., technical_area: identity_access, applicable_asset_types: *alltypes, required_properties: [account.least_privilege, account.separate_admin_account], required_evidence_types: [access_configuration], applicable_profiles: *both, relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-PR-AA-05]}
+  - {id: CTRL-PR-AA-06, requirement_id: REQ-PR-AA-06, title: Protezione fisica, description: Protezione fisica documentabile., technical_area: physical_security, applicable_asset_types: *alltypes, required_properties: [asset.physical_protection_documented], required_evidence_types: [physical_security], applicable_profiles: *both, relevant_system_required: true, verification_mode: evidence_assisted, rule_ids: [RULE-PR-AA-06]}
+  - {id: CTRL-PR-DS-01, requirement_id: REQ-PR-DS-01, title: Cifratura a riposo, description: Dati e supporti rimovibili., technical_area: data_security, applicable_asset_types: *alltypes, required_properties: [], required_evidence_types: [encryption_configuration], applicable_profiles: *both, relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-PR-DS-01]}
+  - {id: CTRL-PR-DS-02, requirement_id: REQ-PR-DS-02, title: Cifratura in transito, description: Configurazioni confrontate con baseline., technical_area: data_security, applicable_asset_types: *alltypes, required_properties: [service.encrypted, service.tls_enabled, service.tls_versions], required_evidence_types: [encryption_configuration], applicable_profiles: *both, relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-PR-DS-02]}
+  - {id: CTRL-PR-DS-11, requirement_id: REQ-PR-DS-11, title: Backup e copie offline, description: Frequenza e presenza di copie offline., technical_area: backup_recovery, applicable_asset_types: *alltypes, required_properties: [backup.frequency_within_plan, backup.offline_copy], required_evidence_types: [backup_record], applicable_profiles: *both, relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-PR-DS-11]}
+  - {id: CTRL-PR-DS-11-E, requirement_id: REQ-PR-DS-11-E, title: Protezione e restore, description: Protezione copie e test di ripristino per essenziali., technical_area: backup_recovery, applicable_asset_types: *alltypes, required_properties: [backup.protected_copy, backup.restore_test_successful], required_evidence_types: [backup_record, restore_test], applicable_profiles: *essential, relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-PR-DS-11-E]}
+  - {id: CTRL-PR-PS-01-E, requirement_id: REQ-PR-PS-01-E, title: Hardening, description: Baseline sicura versionata., technical_area: system_security, applicable_asset_types: *alltypes, required_properties: [asset.hardening_baseline_applied], required_evidence_types: [system_configuration], applicable_profiles: *essential, relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-PR-PS-01-E]}
+  - {id: CTRL-PR-PS-02, requirement_id: REQ-PR-PS-02, title: Supporto e patch, description: Software supportato e aggiornato secondo rischio., technical_area: patch_management, applicable_asset_types: *alltypes, required_properties: [software_component.support_status, software_component.security_update_status], required_evidence_types: [software_inventory, patch_record], applicable_profiles: *both, relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-PR-PS-02]}
+  - {id: CTRL-PR-PS-02-E, requirement_id: REQ-PR-PS-02-E, title: Test patch critiche, description: Requisiti aggiuntivi essenziali., technical_area: patch_management, applicable_asset_types: *alltypes, required_properties: [software_component.support_status, software_component.security_update_status, software_component.critical_update_tested], required_evidence_types: [patch_record], applicable_profiles: *essential, relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-PR-PS-02-E]}
+  - {id: CTRL-PR-PS-03-E, requirement_id: REQ-PR-PS-03-E, title: Manutenzione e dismissione, description: Registri e dismissione sicura., technical_area: system_lifecycle, applicable_asset_types: *alltypes, required_properties: [asset.maintenance_logged, asset.secure_disposal_documented], required_evidence_types: [maintenance_record], applicable_profiles: *essential, relevant_system_required: true, verification_mode: evidence_assisted, rule_ids: [RULE-PR-PS-03-E]}
+  - {id: CTRL-PR-PS-04, requirement_id: REQ-PR-PS-04, title: Logging di sicurezza, description: Accessi amministrativi e remoti., technical_area: logging, applicable_asset_types: *alltypes, required_properties: [asset.admin_remote_access_logging, asset.logs_protected, asset.logs_centralized, asset.log_retention_within_plan], required_evidence_types: [log_configuration], applicable_profiles: *both, relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-PR-PS-04]}
+  - {id: CTRL-PR-IR-01, requirement_id: REQ-PR-IR-01, title: Accesso remoto e firewall, description: Confini e accessi protetti., technical_area: network_security, applicable_asset_types: *alltypes, required_properties: [asset.remote_access_registry_complete, asset.remote_access_protected, asset.firewall_enabled], required_evidence_types: [network_security], applicable_profiles: *both, relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-PR-IR-01]}
+  - {id: CTRL-PR-IR-03-E, requirement_id: REQ-PR-IR-03-E, title: Comunicazioni emergenza, description: Capacità protetta di crisi., technical_area: resilience, applicable_asset_types: *alltypes, required_properties: [security_capability.enabled, security_capability.configured, security_capability.maintained], required_evidence_types: [emergency_communications], applicable_profiles: *essential, relevant_system_required: true, verification_mode: evidence_assisted, rule_ids: [RULE-PR-IR-03-E]}
+  - {id: CTRL-DE-CM-01, requirement_id: REQ-DE-CM-01, title: Rilevamento intrusioni, description: Capacità IDS configurata e monitorata., technical_area: monitoring_detection, applicable_asset_types: *alltypes, required_properties: [security_capability.enabled, security_capability.configured, security_capability.monitored], required_evidence_types: [monitoring_configuration], applicable_profiles: *both, relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-DE-CM-01]}
+  - {id: CTRL-DE-CM-01-E, requirement_id: REQ-DE-CM-01-E, title: Monitoraggio avanzato, description: Soglie e anomalie., technical_area: monitoring_detection, applicable_asset_types: *alltypes, required_properties: [asset.anomaly_thresholds_configured], required_evidence_types: [monitoring_configuration], applicable_profiles: *essential, relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-DE-CM-01-E]}
+  - {id: CTRL-DE-CM-09, requirement_id: REQ-DE-CM-09, title: Protezione endpoint, description: Capacità attiva e monitorata., technical_area: endpoint_security, applicable_asset_types: *alltypes, required_properties: [security_capability.enabled, security_capability.configured, security_capability.maintained, security_capability.monitored], required_evidence_types: [endpoint_protection], applicable_profiles: *both, relevant_system_required: true, verification_mode: automatic, rule_ids: [RULE-DE-CM-09]}
+relationships:
+  - {id: rel-asset-service, subject_id: asset-web, predicate: EXPOSES, object_id: svc-https, provenance_ids: [prov-inventory]}
+  - {id: rel-asset-data, subject_id: asset-web, predicate: PROCESSES, object_id: data-core, provenance_ids: [prov-inventory]}
+  - {id: rel-asset-owner, subject_id: asset-web, predicate: MANAGED_BY, object_id: owner-ops, provenance_ids: [prov-governance]}
+  - {id: rel-vulnerability-asset, subject_id: vuln-web, predicate: AFFECTS, object_id: asset-web, provenance_ids: [prov-scan]}
+  - {id: rel-capability-asset, subject_id: asset-web, predicate: PROTECTED_BY, object_id: cap-endpoint, provenance_ids: [prov-config]}
+provenance_records:
+  - {id: prov-inventory, source: CMDB, source_type: inventory, source_category: asset_internal, collected_at: "2026-08-14T06:00:00Z", method: export autenticato, reliability: high}
+  - {id: prov-config, source: configuration-manager, source_type: configuration, source_category: asset_internal, collected_at: "2026-08-13T00:00:00Z", method: raccolta automatizzata, reliability: high}
+  - {id: prov-governance, source: registro governance, source_type: declaration, source_category: declared, collected_at: "2026-08-01T00:00:00Z", method: dichiarazione approvata, reliability: medium}
+  - {id: prov-scan, source: vulnerability-scanner, source_type: scan, source_category: asset_internal, collected_at: "2026-08-12T00:00:00Z", method: scansione autenticata, reliability: high}
+  - {id: prov-patch, source: patch-manager, source_type: patching, source_category: asset_internal, collected_at: "2026-08-13T00:00:00Z", method: export stato, reliability: high}
+  - {id: prov-access, source: IAM, source_type: identity, source_category: asset_internal, collected_at: "2026-08-13T00:00:00Z", method: export utenze, reliability: high}
+  - {id: prov-network, source: network-manager, source_type: network, source_category: asset_internal, collected_at: "2026-08-13T00:00:00Z", method: export configurazione, reliability: high}
+  - {id: prov-backup, source: backup-manager, source_type: backup, source_category: asset_internal, collected_at: "2026-08-14T03:00:00Z", method: export job e test, reliability: high}

@@ -1,0 +1,25 @@
+schema_version: "1.0"
+policy_version: "EVIDENCE-2026.1"
+policies:
+  asset_inventory: {maximum_age_days: 30, source_priority: [asset_internal, externally_observed, declared, public]}
+  software_inventory: {maximum_age_days: 30, source_priority: [asset_internal, externally_observed, declared, public]}
+  network_flow_inventory: {maximum_age_days: 30, source_priority: [asset_internal, externally_observed, declared, public]}
+  provider_service_inventory: {maximum_age_days: 30, source_priority: [declared, externally_observed, public]}
+  vulnerability_management: {maximum_age_days: 365, source_priority: [asset_internal, declared, public]}
+  vulnerability_scan: {maximum_age_days: 30, source_priority: [externally_observed, asset_internal, declared]}
+  vulnerability_treatment: {maximum_age_days: 30, source_priority: [asset_internal, externally_observed, declared]}
+  access_review: {maximum_age_days: 90, source_priority: [asset_internal, declared, externally_observed]}
+  access_configuration: {maximum_age_days: 30, source_priority: [asset_internal, externally_observed, declared]}
+  physical_security: {maximum_age_days: 365, source_priority: [declared, externally_observed]}
+  encryption_configuration: {maximum_age_days: 30, source_priority: [asset_internal, externally_observed, declared]}
+  backup_record: {maximum_age_days: 30, source_priority: [asset_internal, externally_observed, declared]}
+  restore_test: {maximum_age_days: 90, source_priority: [asset_internal, externally_observed, declared]}
+  system_configuration: {maximum_age_days: 30, source_priority: [asset_internal, externally_observed, declared]}
+  patch_record: {maximum_age_days: 30, source_priority: [asset_internal, externally_observed, declared]}
+  maintenance_record: {maximum_age_days: 365, source_priority: [asset_internal, declared]}
+  log_configuration: {maximum_age_days: 30, source_priority: [asset_internal, externally_observed, declared]}
+  network_security: {maximum_age_days: 30, source_priority: [asset_internal, externally_observed, declared]}
+  emergency_communications: {maximum_age_days: 30, source_priority: [asset_internal, externally_observed, declared]}
+  monitoring_configuration: {maximum_age_days: 30, source_priority: [asset_internal, externally_observed, declared]}
+  endpoint_protection: {maximum_age_days: 30, source_priority: [asset_internal, externally_observed, declared]}
+  certificate: {explicit_validity_only: true, source_priority: [externally_observed, asset_internal, declared]}

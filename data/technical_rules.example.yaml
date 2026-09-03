@@ -1,0 +1,1587 @@
+schema_version: '2.0'
+catalog_id: acn-nis2-technical-rules-it
+catalog_version: 2.1.0
+rules:
+- id: RULE-ID-AM-01
+  version: 2.1.0
+  control_id: CTRL-ID-AM-01
+  requirement_id: REQ-ID-AM-01
+  title: Completezza inventario hardware
+  description: Verifica che il sistema NIS rilevante sia presente nell'inventario tecnico qualificato.
+  evaluator: asset_properties
+  applicability: {}
+  required_properties:
+  - asset.hardware_inventory_complete
+  required_evidence_types:
+  - asset_inventory
+  parameters:
+    properties:
+    - hardware_inventory_complete
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: Completezza e granularità sono quelle definite dal perimetro di rischio.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Completare e validare il record inventariale dell'asset.
+  conditions:
+  - id: RULE-ID-AM-01:asset.hardware_inventory_complete
+    path: asset.hardware_inventory_complete
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Completare e validare il record inventariale dell'asset.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: not_verifiable
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-ID-AM-02
+  version: 2.1.0
+  control_id: CTRL-ID-AM-02
+  requirement_id: REQ-ID-AM-02
+  title: Inventario software e servizi
+  description: Verifica presenza versione e autorizzazione dei componenti software osservati.
+  evaluator: collection_inventory
+  applicability: {}
+  required_properties:
+  - software_component.version
+  - software_component.authorized
+  required_evidence_types:
+  - software_inventory
+  parameters:
+    entity_type: SoftwareComponent
+    fields:
+    - name
+    - version
+    - authorized
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: Il livello di dettaglio dipende dal rischio e dall'architettura.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Censire componenti versioni e stato di autorizzazione.
+  conditions:
+  - id: AM02-SYSTEM
+    path: Asset.name
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Identificare il sistema nel registro inventariale.
+  - id: AM02-SERVICE
+    path: Service.authorized
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Censire e autorizzare i servizi erogati.
+  - id: AM02-SOFTWARE-NAME
+    path: SoftwareComponent.name
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Identificare ogni componente software.
+  - id: AM02-SOFTWARE-VERSION
+    path: SoftwareComponent.version
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Registrare la versione del componente software.
+  - id: AM02-SOFTWARE-AUTH
+    path: SoftwareComponent.authorized
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Autorizzare o rimuovere il componente software.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: non_compliant
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-ID-AM-03-E
+  version: 2.1.0
+  control_id: CTRL-ID-AM-03-E
+  requirement_id: REQ-ID-AM-03-E
+  title: Inventario e autorizzazione dei flussi
+  description: Verifica i record dei flussi di rete rilevanti per il profilo essenziale.
+  evaluator: collection_inventory
+  applicability: {}
+  required_properties:
+  - network_flow.authorized
+  required_evidence_types:
+  - network_flow_inventory
+  parameters:
+    entity_type: NetworkFlow
+    fields:
+    - source
+    - destination
+    - transport_protocol
+    - application_protocol
+    - authorized
+  applicable_profiles:
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: Il perimetro dei flussi deriva dalla valutazione del rischio.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Documentare origine destinazione protocolli e autorizzazione dei flussi.
+  conditions:
+  - id: RULE-ID-AM-03-E:network_flow.authorized
+    path: network_flow.authorized
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Documentare origine destinazione protocolli e autorizzazione dei flussi.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: non_compliant
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-ID-AM-04
+  version: 2.1.0
+  control_id: CTRL-ID-AM-04
+  requirement_id: REQ-ID-AM-04
+  title: Inventario tecnico dei servizi forniti da terzi
+  description: Verifica che le dipendenze tecniche dai fornitori siano censite.
+  evaluator: asset_properties
+  applicability: {}
+  required_properties:
+  - asset.provider_services_inventory_complete
+  required_evidence_types:
+  - provider_service_inventory
+  parameters:
+    properties:
+    - provider_services_inventory_complete
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: evidence_assisted
+  risk_clause: Sono incluse le dipendenze pertinenti al rischio del sistema.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Completare l'elenco dei servizi dei fornitori che supportano l'asset.
+  conditions:
+  - id: RULE-ID-AM-04:asset.provider_services_inventory_complete
+    path: asset.provider_services_inventory_complete
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Completare l'elenco dei servizi dei fornitori che supportano l'asset.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: not_verifiable
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-ID-RA-01
+  version: 2.1.0
+  control_id: CTRL-ID-RA-01
+  requirement_id: REQ-ID-RA-01
+  title: Identificazione delle vulnerabilità da fonti monitorate
+  description: Verifica che le fonti ACN CERT e ISAC pertinenti siano monitorate per identificare vulnerabilità.
+  evaluator: asset_properties
+  applicability: {}
+  required_properties:
+  - asset.vulnerability_advisories_monitored
+  required_evidence_types:
+  - vulnerability_management
+  parameters:
+    properties:
+    - vulnerability_advisories_monitored
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: Le fonti monitorate sono selezionate rispetto alle tecnologie inventariate.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Monitorare fonti ACN CERT e ISAC pertinenti alle tecnologie utilizzate.
+  conditions:
+  - id: RULE-ID-RA-01:asset.vulnerability_advisories_monitored
+    path: asset.vulnerability_advisories_monitored
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Monitorare fonti ACN CERT e ISAC pertinenti alle tecnologie utilizzate.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: not_verifiable
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-ID-RA-01-E
+  version: 2.1.0
+  control_id: CTRL-ID-RA-01-E
+  requirement_id: REQ-ID-RA-01-E
+  title: Vulnerability assessment approfondito
+  description: Verifica l'evidenza delle attività aggiuntive previste per il profilo essenziale.
+  evaluator: vulnerability_assessment
+  applicability: {}
+  required_properties:
+  - asset.extended_vulnerability_assessment_performed
+  required_evidence_types:
+  - vulnerability_scan
+  parameters:
+    properties:
+    - extended_vulnerability_assessment_performed
+  applicable_profiles:
+  - essential
+  relevant_system_required: true
+  verification_mode: evidence_assisted
+  risk_clause: Tecniche e profondità sono determinate dal rischio e dallo stato dell'arte.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Documentare l'approfondimento applicato al vulnerability assessment.
+  conditions:
+  - id: RULE-ID-RA-01-E:asset.extended_vulnerability_assessment_performed
+    path: asset.extended_vulnerability_assessment_performed
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Documentare l'approfondimento applicato al vulnerability assessment.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: not_verifiable
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-ID-RA-08
+  version: 2.1.0
+  control_id: CTRL-ID-RA-08
+  requirement_id: REQ-ID-RA-08
+  title: Trattamento delle vulnerabilità rilevate
+  description: Verifica monitoraggio delle fonti e remediation o mitigazione; in corso non è soddisfacimento.
+  evaluator: vulnerability_treatment
+  applicability: {}
+  required_properties:
+  - asset.vulnerability_advisories_monitored
+  - vulnerability.remediation_status
+  required_evidence_types:
+  - vulnerability_management
+  - vulnerability_treatment
+  parameters: {}
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: Priorità e termini sono quelli documentati nella valutazione del rischio.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Remediare o mitigare e registrare il rischio residuo.
+  conditions:
+  - id: RULE-ID-RA-08:asset.vulnerability_advisories_monitored
+    path: asset.vulnerability_advisories_monitored
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Remediare o mitigare e registrare il rischio residuo.
+  - id: RULE-ID-RA-08:vulnerability.remediation_status
+    path: vulnerability.remediation_status
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Remediare o mitigare e registrare il rischio residuo.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: not_verifiable
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-ID-RA-08-E
+  version: 2.1.0
+  control_id: CTRL-ID-RA-08-E
+  requirement_id: REQ-ID-RA-08-E
+  title: Monitoraggio dei canali dei fornitori critici
+  description: Verifica il monitoraggio dei canali dei fornitori del software ritenuto critico.
+  evaluator: asset_properties
+  applicability: {}
+  required_properties:
+  - asset.critical_software_supplier_channels_monitored
+  required_evidence_types:
+  - vulnerability_management
+  parameters:
+    properties:
+    - critical_software_supplier_channels_monitored
+  applicable_profiles:
+  - essential
+  relevant_system_required: true
+  verification_mode: evidence_assisted
+  risk_clause: Il software critico è individuato dall'inventario e dalla valutazione del rischio.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Monitorare e documentare i canali dei fornitori del software critico.
+  conditions:
+  - id: RULE-ID-RA-08-E:asset.critical_software_supplier_channels_monitored
+    path: asset.critical_software_supplier_channels_monitored
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Monitorare e documentare i canali dei fornitori del software critico.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: not_verifiable
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-PR-AA-01
+  version: 2.1.0
+  control_id: CTRL-PR-AA-01
+  requirement_id: REQ-PR-AA-01
+  title: Inventario e gestione delle utenze
+  description: Verifica record individuali autorizzati e credenziali gestite.
+  evaluator: collection_inventory
+  applicability: {}
+  required_properties:
+  - account.individual
+  - account.authorized
+  - account.credentials_managed
+  required_evidence_types:
+  - access_review
+  parameters:
+    entity_type: Account
+    fields:
+    - account_type
+    - individual
+    - authorized
+    - credentials_managed
+    - last_reviewed_at
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: Frequenza delle revisioni e requisiti credenziali derivano da ruolo e rischio.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Censire e revisionare le utenze e il ciclo di vita delle credenziali.
+  conditions:
+  - id: RULE-PR-AA-01:account.individual
+    path: account.individual
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Censire e revisionare le utenze e il ciclo di vita delle credenziali.
+  - id: RULE-PR-AA-01:account.authorized
+    path: account.authorized
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Censire e revisionare le utenze e il ciclo di vita delle credenziali.
+  - id: RULE-PR-AA-01:account.credentials_managed
+    path: account.credentials_managed
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Censire e revisionare le utenze e il ciclo di vita delle credenziali.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: non_compliant
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-PR-AA-03
+  version: 2.1.0
+  control_id: CTRL-PR-AA-03
+  requirement_id: REQ-PR-AA-03
+  title: MFA per accessi pertinenti al rischio
+  description: Valuta MFA soltanto per utenze privilegiate o di accesso remoto su sistemi NIS rilevanti.
+  evaluator: collection_booleans
+  applicability: {}
+  required_properties:
+  - account.mfa_enabled
+  required_evidence_types:
+  - access_configuration
+  parameters:
+    entity_type: Account
+    properties:
+    - mfa_enabled
+    selectors_any:
+      privileged: true
+      remote_access: true
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: L'applicazione di MFA dipende dalla rilevanza del sistema e dal rischio degli accessi.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Applicare MFA agli accessi privilegiati o remoti individuati dal rischio.
+  conditions:
+  - id: RULE-PR-AA-03:account.mfa_enabled
+    path: account.mfa_enabled
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Applicare MFA agli accessi privilegiati o remoti individuati dal rischio.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: not_applicable
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-PR-AA-05
+  version: 2.1.0
+  control_id: CTRL-PR-AA-05
+  requirement_id: REQ-PR-AA-05
+  title: Minimo privilegio e separazione amministrativa
+  description: Verifica privilegi minimi e account amministrativo separato.
+  evaluator: collection_booleans
+  applicability: {}
+  required_properties:
+  - account.least_privilege
+  - account.separate_admin_account
+  required_evidence_types:
+  - access_configuration
+  parameters:
+    entity_type: Account
+    properties:
+    - least_privilege
+    - separate_admin_account
+    selectors_any:
+      privileged: true
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: I privilegi ammessi dipendono dalle funzioni autorizzate.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Ridurre i privilegi e separare le credenziali amministrative.
+  conditions:
+  - id: RULE-PR-AA-05:account.least_privilege
+    path: account.least_privilege
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Ridurre i privilegi e separare le credenziali amministrative.
+  - id: RULE-PR-AA-05:account.separate_admin_account
+    path: account.separate_admin_account
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Ridurre i privilegi e separare le credenziali amministrative.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: not_applicable
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-PR-AA-06
+  version: 2.1.0
+  control_id: CTRL-PR-AA-06
+  requirement_id: REQ-PR-AA-06
+  title: Protezione fisica documentabile
+  description: Verifica la presenza di configurazione ed evidenza della protezione fisica.
+  evaluator: asset_properties
+  applicability: {}
+  required_properties:
+  - asset.physical_protection_documented
+  required_evidence_types:
+  - physical_security
+  parameters:
+    properties:
+    - physical_protection_documented
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: evidence_assisted
+  risk_clause: Le misure fisiche dipendono da ubicazione minacce e impatto.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Acquisire evidenza corrente delle protezioni fisiche applicabili.
+  conditions:
+  - id: RULE-PR-AA-06:asset.physical_protection_documented
+    path: asset.physical_protection_documented
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Acquisire evidenza corrente delle protezioni fisiche applicabili.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: not_verifiable
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-PR-DS-01
+  version: 2.1.0
+  control_id: CTRL-PR-DS-01
+  requirement_id: REQ-PR-DS-01
+  title: Cifratura dei supporti rimovibili
+  description: Verifica la cifratura dei supporti rimovibili dichiarati per l'asset.
+  evaluator: data_object_protection
+  applicability:
+    has_removable_media: true
+  required_properties: []
+  required_evidence_types:
+  - encryption_configuration
+  parameters:
+    properties: []
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: Il sottoinsieme osservabile copre i supporti rimovibili; i dispositivi portatili restano
+    fuori perimetro.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Cifrare i supporti rimovibili secondo classificazione e baseline approvata.
+  conditions:
+  - id: DS01-REMOVABLE-ENCRYPTED
+    path: DataObject.removable_media_encrypted
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Cifrare i supporti rimovibili autorizzati.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: not_verifiable
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-PR-DS-02
+  version: 2.1.0
+  control_id: CTRL-PR-DS-02
+  requirement_id: REQ-PR-DS-02
+  title: Cifratura delle comunicazioni
+  description: Confronta le configurazioni osservate con una baseline crittografica versionata.
+  evaluator: cryptographic_configuration
+  applicability:
+    has_internet_exposed_services: true
+  required_properties:
+  - service.encrypted
+  - service.tls_enabled
+  - service.tls_versions
+  required_evidence_types:
+  - encryption_configuration
+  parameters:
+    threshold_ref: tls_minimum
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: Gli algoritmi ammessi provengono dalla baseline tecnica CRYPTO-BASELINE-2026.1 e non direttamente
+    dalla NIS2.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Allineare i protocolli alla baseline crittografica approvata.
+  conditions:
+  - id: RULE-PR-DS-02:service.encrypted
+    path: service.encrypted
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Allineare i protocolli alla baseline crittografica approvata.
+  - id: RULE-PR-DS-02:service.tls_enabled
+    path: service.tls_enabled
+    mandatory: true
+    origin: project_baseline
+    selector: {}
+    remediation: Abilitare TLS sui servizi esposti cui si applica la baseline.
+  - id: RULE-PR-DS-02:service.tls_versions
+    path: service.tls_versions
+    mandatory: true
+    origin: project_baseline
+    selector: {}
+    remediation: Allineare i protocolli alla baseline crittografica approvata.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: not_verifiable
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-PR-DS-11
+  version: 2.1.0
+  control_id: CTRL-PR-DS-11
+  requirement_id: REQ-PR-DS-11
+  title: Backup conforme al piano e copie offline
+  description: Verifica periodicità rispetto al piano e presenza di copie offline.
+  evaluator: collection_booleans
+  applicability: {}
+  required_properties:
+  - backup.frequency_within_plan
+  - backup.offline_copy
+  required_evidence_types:
+  - backup_record
+  parameters:
+    entity_type: BackupRecord
+    properties:
+    - frequency_within_plan
+    - offline_copy
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: La frequenza proviene dai piani di continuità e ripristino dichiarati.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Adeguare frequenza e copie offline al piano approvato.
+  conditions:
+  - id: RULE-PR-DS-11:backup.frequency_within_plan
+    path: backup.frequency_within_plan
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Adeguare frequenza e copie offline al piano approvato.
+  - id: RULE-PR-DS-11:backup.offline_copy
+    path: backup.offline_copy
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Adeguare frequenza e copie offline al piano approvato.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: non_compliant
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-PR-DS-11-E
+  version: 2.1.0
+  control_id: CTRL-PR-DS-11-E
+  requirement_id: REQ-PR-DS-11-E
+  title: Protezione e test di ripristino per il profilo essenziale
+  description: Verifica protezione delle copie e riuscita delle prove periodiche di ripristino.
+  evaluator: collection_booleans
+  applicability: {}
+  required_properties:
+  - backup.protected_copy
+  - backup.restore_test_successful
+  required_evidence_types:
+  - backup_record
+  - restore_test
+  parameters:
+    entity_type: BackupRecord
+    properties:
+    - protected_copy
+    - restore_test_successful
+  applicable_profiles:
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: Protezione e periodicità dei test derivano dagli scenari di perdita e compromissione.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Proteggere le copie e completare con successo le prove di ripristino pianificate.
+  conditions:
+  - id: RULE-PR-DS-11-E:backup.protected_copy
+    path: backup.protected_copy
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Proteggere le copie e completare con successo le prove di ripristino pianificate.
+  - id: RULE-PR-DS-11-E:backup.restore_test_successful
+    path: backup.restore_test_successful
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Proteggere le copie e completare con successo le prove di ripristino pianificate.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: non_compliant
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-PR-PS-01-E
+  version: 2.1.0
+  control_id: CTRL-PR-PS-01-E
+  requirement_id: REQ-PR-PS-01-E
+  title: Baseline di hardening applicata
+  description: Verifica l'applicazione di una baseline tecnica versionata.
+  evaluator: asset_properties
+  applicability: {}
+  required_properties:
+  - asset.hardening_baseline_applied
+  required_evidence_types:
+  - system_configuration
+  parameters:
+    properties:
+    - hardening_baseline_applied
+  applicable_profiles:
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: La baseline è scelta in funzione della tecnologia e dello stato dell'arte.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Applicare e versionare una baseline di hardening appropriata.
+  conditions:
+  - id: RULE-PR-PS-01-E:asset.hardening_baseline_applied
+    path: asset.hardening_baseline_applied
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Applicare e versionare una baseline di hardening appropriata.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: not_verifiable
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-PR-PS-02
+  version: 2.1.0
+  control_id: CTRL-PR-PS-02
+  requirement_id: REQ-PR-PS-02
+  title: Software supportato e aggiornamenti entro il piano di rischio
+  description: Verifica supporto e stato aggiornamenti senza imporre una soglia universale.
+  evaluator: supported_and_updated_software
+  applicability: {}
+  required_properties:
+  - software_component.support_status
+  - software_component.security_update_status
+  required_evidence_types:
+  - software_inventory
+  - patch_record
+  parameters:
+    critical_patch_test_required: false
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: Le scadenze di patching provengono dal piano di rischio dichiarato.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Sostituire software fuori supporto e rispettare i termini del piano di patching.
+  conditions:
+  - id: RULE-PR-PS-02:software_component.support_status
+    path: software_component.support_status
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Sostituire software fuori supporto e rispettare i termini del piano di patching.
+  - id: RULE-PR-PS-02:software_component.security_update_status
+    path: software_component.security_update_status
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Sostituire software fuori supporto e rispettare i termini del piano di patching.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: not_applicable
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-PR-PS-02-E
+  version: 2.1.0
+  control_id: CTRL-PR-PS-02-E
+  requirement_id: REQ-PR-PS-02-E
+  title: Test delle patch critiche
+  description: Verifica che gli aggiornamenti critici siano stati testati secondo il processo approvato.
+  evaluator: supported_and_updated_software
+  applicability: {}
+  required_properties:
+  - software_component.support_status
+  - software_component.security_update_status
+  - software_component.critical_update_tested
+  required_evidence_types:
+  - patch_record
+  parameters:
+    critical_patch_test_required: true
+  applicable_profiles:
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: Modalità e ambiente di test sono commisurati a rischio e compatibilità.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Testare e tracciare gli aggiornamenti critici prima della distribuzione prevista.
+  conditions:
+  - id: RULE-PR-PS-02-E:software_component.support_status
+    path: software_component.support_status
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Testare e tracciare gli aggiornamenti critici prima della distribuzione prevista.
+  - id: RULE-PR-PS-02-E:software_component.security_update_status
+    path: software_component.security_update_status
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Testare e tracciare gli aggiornamenti critici prima della distribuzione prevista.
+  - id: RULE-PR-PS-02-E:software_component.critical_update_tested
+    path: software_component.critical_update_tested
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Testare e tracciare gli aggiornamenti critici prima della distribuzione prevista.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: not_applicable
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-PR-PS-03-E
+  version: 2.1.0
+  control_id: CTRL-PR-PS-03-E
+  requirement_id: REQ-PR-PS-03-E
+  title: Manutenzione e dismissione tracciate
+  description: Verifica evidenza tecnica di manutenzione e dismissione sicura.
+  evaluator: asset_properties
+  applicability: {}
+  required_properties:
+  - asset.maintenance_logged
+  - asset.secure_disposal_documented
+  required_evidence_types:
+  - maintenance_record
+  parameters:
+    properties:
+    - maintenance_logged
+    - secure_disposal_documented
+  applicable_profiles:
+  - essential
+  relevant_system_required: true
+  verification_mode: evidence_assisted
+  risk_clause: Le tecniche dipendono da supporto dati e rischio residuo.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Registrare manutenzione e procedure di dismissione sicura.
+  conditions:
+  - id: RULE-PR-PS-03-E:asset.maintenance_logged
+    path: asset.maintenance_logged
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Registrare manutenzione e procedure di dismissione sicura.
+  - id: RULE-PR-PS-03-E:asset.secure_disposal_documented
+    path: asset.secure_disposal_documented
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Registrare manutenzione e procedure di dismissione sicura.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: not_verifiable
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-PR-PS-04
+  version: 2.1.0
+  control_id: CTRL-PR-PS-04
+  requirement_id: REQ-PR-PS-04
+  title: Logging di accessi amministrativi e remoti
+  description: Verifica eventi rilevanti protezione centralizzazione e retention conforme al piano.
+  evaluator: asset_properties
+  applicability: {}
+  required_properties:
+  - asset.admin_remote_access_logging
+  - asset.logs_protected
+  - asset.logs_centralized
+  - asset.log_retention_within_plan
+  required_evidence_types:
+  - log_configuration
+  parameters:
+    properties:
+    - admin_remote_access_logging
+    - logs_protected
+    - logs_centralized
+    - log_retention_within_plan
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: Eventi e durata di conservazione provengono dal piano di logging e dal rischio.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Registrare accessi amministrativi e remoti e proteggere i log per il periodo pianificato.
+  conditions:
+  - id: RULE-PR-PS-04:asset.admin_remote_access_logging
+    path: asset.admin_remote_access_logging
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Registrare accessi amministrativi e remoti e proteggere i log per il periodo pianificato.
+  - id: RULE-PR-PS-04:asset.logs_protected
+    path: asset.logs_protected
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Registrare accessi amministrativi e remoti e proteggere i log per il periodo pianificato.
+  - id: RULE-PR-PS-04:asset.logs_centralized
+    path: asset.logs_centralized
+    mandatory: false
+    origin: regulatory
+    selector: {}
+    remediation: Registrare accessi amministrativi e remoti e proteggere i log per il periodo pianificato.
+  - id: RULE-PR-PS-04:asset.log_retention_within_plan
+    path: asset.log_retention_within_plan
+    mandatory: true
+    origin: project_baseline
+    selector: {}
+    remediation: Registrare accessi amministrativi e remoti e proteggere i log per il periodo pianificato.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: not_verifiable
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-PR-IR-01
+  version: 2.1.0
+  control_id: CTRL-PR-IR-01
+  requirement_id: REQ-PR-IR-01
+  title: Accesso remoto governato e firewall attivo
+  description: Verifica elenco degli accessi remoti canali protetti e protezione del confine.
+  evaluator: asset_properties
+  applicability: {}
+  required_properties:
+  - asset.remote_access_registry_complete
+  - asset.remote_access_protected
+  - asset.firewall_enabled
+  required_evidence_types:
+  - network_security
+  parameters:
+    properties:
+    - remote_access_registry_complete
+    - remote_access_protected
+    - firewall_enabled
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: Regole e canali sono commisurati a esposizione e rischio.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Governare gli accessi remoti e applicare regole firewall approvate.
+  conditions:
+  - id: RULE-PR-IR-01:asset.remote_access_registry_complete
+    path: asset.remote_access_registry_complete
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Governare gli accessi remoti e applicare regole firewall approvate.
+  - id: RULE-PR-IR-01:asset.remote_access_protected
+    path: asset.remote_access_protected
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Governare gli accessi remoti e applicare regole firewall approvate.
+  - id: RULE-PR-IR-01:asset.firewall_enabled
+    path: asset.firewall_enabled
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Governare gli accessi remoti e applicare regole firewall approvate.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: not_verifiable
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-PR-IR-03-E
+  version: 2.1.0
+  control_id: CTRL-PR-IR-03-E
+  requirement_id: REQ-PR-IR-03-E
+  title: Capacità protetta per comunicazioni di emergenza
+  description: Verifica configurazione e manutenzione della capacità di comunicazione di emergenza.
+  evaluator: collection_booleans
+  applicability: {}
+  required_properties:
+  - security_capability.enabled
+  - security_capability.configured
+  - security_capability.maintained
+  required_evidence_types:
+  - emergency_communications
+  parameters:
+    entity_type: SecurityCapability
+    capability_types:
+    - emergency_communications
+    properties:
+    - enabled
+    - configured
+    - maintained
+  applicable_profiles:
+  - essential
+  relevant_system_required: true
+  verification_mode: evidence_assisted
+  risk_clause: Canali e protezioni dipendono dagli scenari di crisi.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Predisporre testare e mantenere comunicazioni di emergenza protette.
+  conditions:
+  - id: RULE-PR-IR-03-E:security_capability.enabled
+    path: security_capability.enabled
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Predisporre testare e mantenere comunicazioni di emergenza protette.
+  - id: RULE-PR-IR-03-E:security_capability.configured
+    path: security_capability.configured
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Predisporre testare e mantenere comunicazioni di emergenza protette.
+  - id: RULE-PR-IR-03-E:security_capability.maintained
+    path: security_capability.maintained
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Predisporre testare e mantenere comunicazioni di emergenza protette.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: non_compliant
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-DE-CM-01
+  version: 2.1.0
+  control_id: CTRL-DE-CM-01
+  requirement_id: REQ-DE-CM-01
+  title: Rilevamento degli incidenti di rete
+  description: Verifica la capacità tecnica comune di rilevare tempestivamente eventi potenzialmente avversi.
+  evaluator: collection_booleans
+  applicability: {}
+  required_properties:
+  - security_capability.enabled
+  - security_capability.configured
+  - security_capability.monitored
+  required_evidence_types:
+  - monitoring_configuration
+  parameters:
+    entity_type: SecurityCapability
+    capability_types:
+    - intrusion_detection
+    properties:
+    - enabled
+    - configured
+    - monitored
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: La copertura della capacità di rilevamento è basata su architettura e rischio.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Abilitare e monitorare le capacità di rilevamento e filtraggio pertinenti.
+  conditions:
+  - id: RULE-DE-CM-01:security_capability.enabled
+    path: security_capability.enabled
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Abilitare e monitorare le capacità di rilevamento e filtraggio pertinenti.
+  - id: RULE-DE-CM-01:security_capability.configured
+    path: security_capability.configured
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Abilitare e monitorare le capacità di rilevamento e filtraggio pertinenti.
+  - id: RULE-DE-CM-01:security_capability.monitored
+    path: security_capability.monitored
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Abilitare e monitorare le capacità di rilevamento e filtraggio pertinenti.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: non_compliant
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-DE-CM-01-E
+  version: 2.1.0
+  control_id: CTRL-DE-CM-01-E
+  requirement_id: REQ-DE-CM-01-E
+  title: Soglie e anomalie calibrate
+  description: Verifica la configurazione delle soglie previste per il profilo essenziale.
+  evaluator: asset_properties
+  applicability: {}
+  required_properties:
+  - asset.anomaly_thresholds_configured
+  required_evidence_types:
+  - monitoring_configuration
+  parameters:
+    properties:
+    - anomaly_thresholds_configured
+  applicable_profiles:
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: Le soglie sono calibrate sul comportamento atteso e non sono universali.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Calibrare e riesaminare soglie e regole di anomalia.
+  conditions:
+  - id: RULE-DE-CM-01-E:asset.anomaly_thresholds_configured
+    path: asset.anomaly_thresholds_configured
+    mandatory: true
+    origin: project_baseline
+    selector: {}
+    remediation: Calibrare e riesaminare soglie e regole di anomalia.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: not_verifiable
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.
+- id: RULE-DE-CM-09
+  version: 2.1.0
+  control_id: CTRL-DE-CM-09
+  requirement_id: REQ-DE-CM-09
+  title: Protezione endpoint attiva e monitorata
+  description: Verifica capacità endpoint abilitata configurata mantenuta e monitorata.
+  evaluator: collection_booleans
+  applicability: {}
+  required_properties:
+  - security_capability.enabled
+  - security_capability.configured
+  - security_capability.maintained
+  - security_capability.monitored
+  required_evidence_types:
+  - endpoint_protection
+  parameters:
+    entity_type: SecurityCapability
+    capability_types:
+    - endpoint_protection
+    properties:
+    - enabled
+    - configured
+    - maintained
+    - monitored
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: direct_technical
+  risk_clause: La capacità è selezionata in base al tipo di endpoint e al rischio.
+  messages:
+    compliant: Le condizioni tecniche osservabili della regola risultano soddisfatte.
+    partially_compliant: Solo una parte delle condizioni tecniche risulta soddisfatta.
+    non_compliant: È stato osservato uno scostamento tecnico rispetto alla regola.
+    not_verifiable: Dati o evidenze non consentono una verifica conclusiva.
+    not_applicable: La regola non è applicabile al profilo o al sistema.
+    manual_review_required: Una deroga o un rischio accettato richiede revisione manuale.
+  recommendation: Installare configurare mantenere e monitorare la protezione endpoint appropriata.
+  conditions:
+  - id: RULE-DE-CM-09:security_capability.enabled
+    path: security_capability.enabled
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Installare configurare mantenere e monitorare la protezione endpoint appropriata.
+  - id: RULE-DE-CM-09:security_capability.configured
+    path: security_capability.configured
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Installare configurare mantenere e monitorare la protezione endpoint appropriata.
+  - id: RULE-DE-CM-09:security_capability.maintained
+    path: security_capability.maintained
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Installare configurare mantenere e monitorare la protezione endpoint appropriata.
+  - id: RULE-DE-CM-09:security_capability.monitored
+    path: security_capability.monitored
+    mandatory: true
+    origin: regulatory
+    selector: {}
+    remediation: Installare configurare mantenere e monitorare la protezione endpoint appropriata.
+  decision_policy:
+    type: all_required
+    entity_aggregation: all_must_pass
+    allow_partial: false
+    threshold: null
+  empty_collection_policy: non_compliant
+  allowed_outcomes:
+  - compliant
+  - non_compliant
+  - not_verifiable
+  - not_applicable
+  information_actions:
+    not_declared: Acquisire e dichiarare il dato mancante.
+    stale_information: Aggiornare l'evidenza o il dato scaduto.
+    collection_failed: Correggere il collector e ripetere l'acquisizione.
+    source_unavailable: Ripristinare o sostituire la fonte informativa.

@@ -1,0 +1,109 @@
+schema_version: "1.0"
+# Oracle letti soltanto dopo le 93 invocazioni della pipeline generale.
+rules:
+  - rule_id: RULE-ID-AM-01
+    control_id: CTRL-ID-AM-01
+    requirement_id: REQ-ID-AM-01
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable}
+  - rule_id: RULE-ID-AM-02
+    control_id: CTRL-ID-AM-02
+    requirement_id: REQ-ID-AM-02
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable}
+  - rule_id: RULE-ID-AM-03-E
+    control_id: CTRL-ID-AM-03-E
+    requirement_id: REQ-ID-AM-03-E
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable, important_profile: not_applicable}
+  - rule_id: RULE-ID-AM-04
+    control_id: CTRL-ID-AM-04
+    requirement_id: REQ-ID-AM-04
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable}
+  - rule_id: RULE-ID-RA-01
+    control_id: CTRL-ID-RA-01
+    requirement_id: REQ-ID-RA-01
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable}
+  - rule_id: RULE-ID-RA-01-E
+    control_id: CTRL-ID-RA-01-E
+    requirement_id: REQ-ID-RA-01-E
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable, important_profile: not_applicable}
+  - rule_id: RULE-ID-RA-08
+    control_id: CTRL-ID-RA-08
+    requirement_id: REQ-ID-RA-08
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable, accepted_risk: compliant}
+    expected_governance: {accepted_risk: manual_review_required}
+  - rule_id: RULE-ID-RA-08-E
+    control_id: CTRL-ID-RA-08-E
+    requirement_id: REQ-ID-RA-08-E
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable, important_profile: not_applicable}
+  - rule_id: RULE-PR-AA-01
+    control_id: CTRL-PR-AA-01
+    requirement_id: REQ-PR-AA-01
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable}
+  - rule_id: RULE-PR-AA-03
+    control_id: CTRL-PR-AA-03
+    requirement_id: REQ-PR-AA-03
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable}
+  - rule_id: RULE-PR-AA-05
+    control_id: CTRL-PR-AA-05
+    requirement_id: REQ-PR-AA-05
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable, mixed_conditions: non_compliant}
+  - rule_id: RULE-PR-AA-06
+    control_id: CTRL-PR-AA-06
+    requirement_id: REQ-PR-AA-06
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable}
+  - rule_id: RULE-PR-DS-01
+    control_id: CTRL-PR-DS-01
+    requirement_id: REQ-PR-DS-01
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable}
+  - rule_id: RULE-PR-DS-02
+    control_id: CTRL-PR-DS-02
+    requirement_id: REQ-PR-DS-02
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable}
+  - rule_id: RULE-PR-DS-11
+    control_id: CTRL-PR-DS-11
+    requirement_id: REQ-PR-DS-11
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable, mixed_conditions: non_compliant}
+  - rule_id: RULE-PR-DS-11-E
+    control_id: CTRL-PR-DS-11-E
+    requirement_id: REQ-PR-DS-11-E
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable, important_profile: not_applicable}
+  - rule_id: RULE-PR-PS-01-E
+    control_id: CTRL-PR-PS-01-E
+    requirement_id: REQ-PR-PS-01-E
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable, important_profile: not_applicable, active_exception: compliant}
+    expected_governance: {active_exception: manual_review_required}
+  - rule_id: RULE-PR-PS-02
+    control_id: CTRL-PR-PS-02
+    requirement_id: REQ-PR-PS-02
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable}
+  - rule_id: RULE-PR-PS-02-E
+    control_id: CTRL-PR-PS-02-E
+    requirement_id: REQ-PR-PS-02-E
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable, important_profile: not_applicable}
+  - rule_id: RULE-PR-PS-03-E
+    control_id: CTRL-PR-PS-03-E
+    requirement_id: REQ-PR-PS-03-E
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable, important_profile: not_applicable}
+  - rule_id: RULE-PR-PS-04
+    control_id: CTRL-PR-PS-04
+    requirement_id: REQ-PR-PS-04
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable, mixed_conditions: compliant}
+  - rule_id: RULE-PR-IR-01
+    control_id: CTRL-PR-IR-01
+    requirement_id: REQ-PR-IR-01
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable}
+  - rule_id: RULE-PR-IR-03-E
+    control_id: CTRL-PR-IR-03-E
+    requirement_id: REQ-PR-IR-03-E
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable, important_profile: not_applicable}
+  - rule_id: RULE-DE-CM-01
+    control_id: CTRL-DE-CM-01
+    requirement_id: REQ-DE-CM-01
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable, mixed_conditions: non_compliant}
+  - rule_id: RULE-DE-CM-01-E
+    control_id: CTRL-DE-CM-01-E
+    requirement_id: REQ-DE-CM-01-E
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable, important_profile: not_applicable}
+  - rule_id: RULE-DE-CM-09
+    control_id: CTRL-DE-CM-09
+    requirement_id: REQ-DE-CM-09
+    expected: {positive: compliant, known_violation: non_compliant, without_evidence: not_verifiable}

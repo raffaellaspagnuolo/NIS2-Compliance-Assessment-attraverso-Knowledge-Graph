@@ -1,0 +1,14 @@
+schema_version: "1.0"
+policy_version: "OPERATIONAL-2026.1"
+technical_thresholds:
+  tls_minimum:
+    baseline_id: CRYPTO-BASELINE-2026.1
+    requires_tls: true
+    allowed_tls_versions: [TLSv1.2, TLSv1.3]
+    origin: project_baseline
+    rationale: "Baseline crittografica del progetto; non è una soglia prescritta autonomamente dalla NIS2."
+priority:
+  scale: 100
+  weights: {technical_status: 0.40, criticality: 0.25, impact: 0.20, exposure: 0.15}
+  status_scores: {non_compliant: 1.0, not_verifiable: 0.65, partially_compliant: 0.5}
+  level_scores: {none: 0.0, unknown: 0.25, low: 0.25, medium: 0.5, high: 0.75, critical: 1.0}

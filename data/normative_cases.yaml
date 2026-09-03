@@ -1,0 +1,57 @@
+schema_version: "1.0"
+suite_type: independent_normative_cases
+assessment_instant: "2026-08-15T10:00:00Z"
+# Gli input e gli oracle sono dichiarati esplicitamente e non derivano dal catalogo regole.
+cases:
+  - {id: NC-AM01-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-ID-AM-01, expected: compliant}
+  - {id: NC-AM01-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-ID-AM-01, expected: non_compliant}
+  - {id: NC-AM02-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-ID-AM-02, expected: compliant}
+  - {id: NC-AM02-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-ID-AM-02, expected: compliant}
+  - {id: NC-AM03E-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-ID-AM-03-E, expected: compliant}
+  - {id: NC-AM03E-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-ID-AM-03-E, expected: non_compliant}
+  - {id: NC-AM04-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-ID-AM-04, expected: compliant}
+  - {id: NC-AM04-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-ID-AM-04, expected: not_verifiable}
+  - {id: NC-RA01-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-ID-RA-01, expected: compliant}
+  - {id: NC-RA01-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-ID-RA-01, expected: not_verifiable}
+  - {id: NC-RA01E-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-ID-RA-01-E, expected: compliant}
+  - {id: NC-RA01E-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-ID-RA-01-E, expected: non_compliant}
+  - {id: NC-RA08-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-ID-RA-08, expected: compliant}
+  - {id: NC-RA08-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-ID-RA-08, expected: non_compliant}
+  - {id: NC-RA08E-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-ID-RA-08-E, expected: compliant}
+  - {id: NC-RA08E-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-ID-RA-08-E, expected: not_verifiable}
+  - {id: NC-AA01-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-PR-AA-01, expected: compliant}
+  - {id: NC-AA01-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-PR-AA-01, expected: non_compliant}
+  - {id: NC-AA03-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-PR-AA-03, expected: compliant}
+  - {id: NC-AA03-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-PR-AA-03, expected: non_compliant}
+  - {id: NC-AA05-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-PR-AA-05, expected: compliant}
+  - {id: NC-AA05-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-PR-AA-05, expected: non_compliant}
+  - {id: NC-AA06-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-PR-AA-06, expected: compliant}
+  - {id: NC-AA06-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-PR-AA-06, expected: not_verifiable}
+  - {id: NC-DS01-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-PR-DS-01, expected: not_verifiable}
+  - {id: NC-DS01-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-PR-DS-01, expected: not_verifiable}
+  - {id: NC-DS02-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-PR-DS-02, expected: compliant}
+  - {id: NC-DS02-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-PR-DS-02, expected: non_compliant}
+  - {id: NC-DS11-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-PR-DS-11, expected: compliant}
+  - {id: NC-DS11-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-PR-DS-11, expected: non_compliant}
+  - {id: NC-DS11E-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-PR-DS-11-E, expected: compliant}
+  - {id: NC-DS11E-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-PR-DS-11-E, expected: non_compliant}
+  - {id: NC-PS01E-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-PR-PS-01-E, expected: compliant}
+  - {id: NC-PS01E-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-PR-PS-01-E, expected: non_compliant}
+  - {id: NC-PS02-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-PR-PS-02, expected: compliant}
+  - {id: NC-PS02-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-PR-PS-02, expected: non_compliant}
+  - {id: NC-PS02E-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-PR-PS-02-E, expected: compliant}
+  - {id: NC-PS02E-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-PR-PS-02-E, expected: non_compliant}
+  - {id: NC-PS03E-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-PR-PS-03-E, expected: compliant}
+  - {id: NC-PS03E-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-PR-PS-03-E, expected: non_compliant}
+  - {id: NC-PS04-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-PR-PS-04, expected: compliant}
+  - {id: NC-PS04-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-PR-PS-04, expected: non_compliant}
+  - {id: NC-IR01-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-PR-IR-01, expected: compliant}
+  - {id: NC-IR01-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-PR-IR-01, expected: non_compliant}
+  - {id: NC-IR03E-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-PR-IR-03-E, expected: compliant}
+  - {id: NC-IR03E-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-PR-IR-03-E, expected: non_compliant}
+  - {id: NC-CM01-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-DE-CM-01, expected: compliant}
+  - {id: NC-CM01-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-DE-CM-01, expected: non_compliant}
+  - {id: NC-CM01E-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-DE-CM-01-E, expected: compliant}
+  - {id: NC-CM01E-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-DE-CM-01-E, expected: non_compliant}
+  - {id: NC-CM09-A, input: scenarios/normalized_environment_01_aurora_essential_mature.yaml, asset_id: asset-aurora-core, rule_id: RULE-DE-CM-09, expected: compliant}
+  - {id: NC-CM09-B, input: scenarios/normalized_environment_03_delta_essential_critical.yaml, asset_id: asset-delta-core, rule_id: RULE-DE-CM-09, expected: non_compliant}

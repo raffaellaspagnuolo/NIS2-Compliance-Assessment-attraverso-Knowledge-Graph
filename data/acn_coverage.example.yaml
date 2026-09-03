@@ -1,0 +1,29 @@
+schema_version: "1.0"
+catalog_version: "ACN-COVERAGE-2.1.0"
+records:
+  - {rule_id: RULE-ID-AM-01, level: complete, verified_scope: "Inventario aggiornato e approvato dell'hardware nello scope dichiarato.", unverified_scope: ""}
+  - {rule_id: RULE-ID-AM-02, level: complete, verified_scope: "Inventari di sistemi, servizi e componenti software, con identificazione e autorizzazione.", unverified_scope: ""}
+  - {rule_id: RULE-ID-AM-03-E, level: complete, verified_scope: "Inventario e autorizzazione dei flussi di rete nello scope dichiarato.", unverified_scope: ""}
+  - {rule_id: RULE-ID-AM-04, level: partial, verified_scope: "Presenza dell'inventario strutturato dei servizi erogati da fornitori.", unverified_scope: "Aggiornamento sostanziale e completezza dei rapporti di fornitura."}
+  - {rule_id: RULE-ID-RA-01, level: partial, verified_scope: "Uso dichiarato dei canali monitorati per identificare vulnerabilità.", unverified_scope: "Completezza sostanziale dell'identificazione su ogni tecnologia."}
+  - {rule_id: RULE-ID-RA-01-E, level: partial, verified_scope: "Presenza, freschezza e struttura della relazione di vulnerability assessment.", unverified_scope: "Profondità tecnica e adeguatezza sostanziale di VA e penetration test."}
+  - {rule_id: RULE-ID-RA-08, level: partial, verified_scope: "Monitoraggio e stato tecnico di remediation o mitigazione.", unverified_scope: "Piano organizzativo, ruoli e approvazione dell'organo direttivo."}
+  - {rule_id: RULE-ID-RA-08-E, level: partial, verified_scope: "Monitoraggio strutturato dei canali dei fornitori critici.", unverified_scope: "Adeguatezza sostanziale della selezione dei fornitori e delle risposte."}
+  - {rule_id: RULE-PR-AA-01, level: complete, verified_scope: "Censimento, autorizzazione, individualità, credenziali e revisione delle utenze.", unverified_scope: ""}
+  - {rule_id: RULE-PR-AA-03, level: partial, verified_scope: "MFA per utenze privilegiate o remote selezionate in modo tri-state.", unverified_scope: "Giudizio complessivo di adeguatezza dell'autenticazione rispetto al rischio."}
+  - {rule_id: RULE-PR-AA-05, level: complete, verified_scope: "Minimo privilegio per tutte le utenze e separazione per quelle amministrative.", unverified_scope: ""}
+  - {rule_id: RULE-PR-AA-06, level: partial, verified_scope: "Presenza e validità dell'evidenza di protezione fisica.", unverified_scope: "Adeguatezza sostanziale delle misure fisiche."}
+  - {rule_id: RULE-PR-DS-01, level: partial, verified_scope: "Cifratura dei supporti rimovibili censiti.", unverified_scope: "Dispositivi portatili, auto-esecuzione e scansione antimalware."}
+  - {rule_id: RULE-PR-DS-02, level: partial, verified_scope: "Configurazione crittografica dei servizi Internet censiti.", unverified_scope: "Tutti i flussi esterni vocali, video, testuali e non TLS."}
+  - {rule_id: RULE-PR-DS-11, level: complete, verified_scope: "Periodicità prevista e copie offline dei backup.", unverified_scope: ""}
+  - {rule_id: RULE-PR-DS-11-E, level: complete, verified_scope: "Protezione delle copie e test periodico di ripristino.", unverified_scope: ""}
+  - {rule_id: RULE-PR-PS-01-E, level: complete, verified_scope: "Baseline hardened versionata, definita e documentata.", unverified_scope: ""}
+  - {rule_id: RULE-PR-PS-02, level: complete, verified_scope: "Supporto e aggiornamento del software rispetto al piano di rischio.", unverified_scope: ""}
+  - {rule_id: RULE-PR-PS-02-E, level: complete, verified_scope: "Test degli aggiornamenti del software critico.", unverified_scope: ""}
+  - {rule_id: RULE-PR-PS-03-E, level: partial, verified_scope: "Evidenze strutturate di manutenzione e dismissione sicura.", unverified_scope: "Adeguatezza sostanziale delle procedure di trasferimento e dismissione."}
+  - {rule_id: RULE-PR-PS-04, level: complete, verified_scope: "Logging remoto/amministrativo, protezione e retention; centralizzazione informativa.", unverified_scope: ""}
+  - {rule_id: RULE-PR-IR-01, level: complete, verified_scope: "Registro accessi remoti, protezione dei canali e capacità firewall.", unverified_scope: ""}
+  - {rule_id: RULE-PR-IR-03-E, level: complete, verified_scope: "Capacità protetta e mantenuta per comunicazioni di emergenza.", unverified_scope: ""}
+  - {rule_id: RULE-DE-CM-01, level: complete, verified_scope: "Strumenti tecnici aggiornati, mantenuti e configurati per il rilevamento.", unverified_scope: ""}
+  - {rule_id: RULE-DE-CM-01-E, level: complete, verified_scope: "Parametri quantitativi e qualitativi definiti, monitorati e documentati.", unverified_scope: ""}
+  - {rule_id: RULE-DE-CM-09, level: complete, verified_scope: "Protezione endpoint presente, aggiornata, mantenuta e configurata.", unverified_scope: ""}

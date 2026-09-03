@@ -1,0 +1,113 @@
+schema_version: '1.1'
+scenarios:
+  scenario-aurora-essential-mature:
+    information_coverage: 0.9615
+    coverage_numerator: 25
+    coverage_denominator: 26
+    evaluated_controls: 26
+    excluded_results: 26
+    counts:
+      compliant: 25
+      not_verifiable: 1
+    rules:
+      RULE-ID-AM-01: compliant
+      RULE-ID-AM-02: compliant
+      RULE-ID-AM-03-E: compliant
+      RULE-ID-AM-04: compliant
+      RULE-ID-RA-01: compliant
+      RULE-ID-RA-01-E: compliant
+      RULE-ID-RA-08: compliant
+      RULE-ID-RA-08-E: compliant
+      RULE-PR-AA-01: compliant
+      RULE-PR-AA-03: compliant
+      RULE-PR-AA-05: compliant
+      RULE-PR-AA-06: compliant
+      RULE-PR-DS-01: not_verifiable
+      RULE-PR-DS-02: compliant
+      RULE-PR-DS-11: compliant
+      RULE-PR-DS-11-E: compliant
+      RULE-PR-PS-01-E: compliant
+      RULE-PR-PS-02: compliant
+      RULE-PR-PS-02-E: compliant
+      RULE-PR-PS-03-E: compliant
+      RULE-PR-PS-04: compliant
+      RULE-PR-IR-01: compliant
+      RULE-PR-IR-03-E: compliant
+      RULE-DE-CM-01: compliant
+      RULE-DE-CM-01-E: compliant
+      RULE-DE-CM-09: compliant
+  scenario-tirrena-important-mixed:
+    information_coverage: 0.9412
+    coverage_numerator: 16
+    coverage_denominator: 17
+    evaluated_controls: 17
+    excluded_results: 35
+    counts:
+      compliant: 9
+      non_compliant: 7
+      not_verifiable: 1
+      not_applicable: 9
+    rules:
+      RULE-ID-AM-01: compliant
+      RULE-ID-AM-02: compliant
+      RULE-ID-AM-03-E: not_applicable
+      RULE-ID-AM-04: non_compliant
+      RULE-ID-RA-01: non_compliant
+      RULE-ID-RA-01-E: not_applicable
+      RULE-ID-RA-08: non_compliant
+      RULE-ID-RA-08-E: not_applicable
+      RULE-PR-AA-01: compliant
+      RULE-PR-AA-03: non_compliant
+      RULE-PR-AA-05: non_compliant
+      RULE-PR-AA-06: compliant
+      RULE-PR-DS-01: not_verifiable
+      RULE-PR-DS-02: compliant
+      RULE-PR-DS-11: compliant
+      RULE-PR-DS-11-E: not_applicable
+      RULE-PR-PS-01-E: not_applicable
+      RULE-PR-PS-02: non_compliant
+      RULE-PR-PS-02-E: not_applicable
+      RULE-PR-PS-03-E: not_applicable
+      RULE-PR-PS-04: compliant
+      RULE-PR-IR-01: compliant
+      RULE-PR-IR-03-E: not_applicable
+      RULE-DE-CM-01: non_compliant
+      RULE-DE-CM-01-E: not_applicable
+      RULE-DE-CM-09: compliant
+  scenario-delta-essential-critical:
+    information_coverage: 0.8077
+    coverage_numerator: 21
+    coverage_denominator: 26
+    evaluated_controls: 26
+    excluded_results: 26
+    counts:
+      compliant: 1
+      non_compliant: 20
+      not_verifiable: 5
+    rules:
+      RULE-ID-AM-01: non_compliant
+      RULE-ID-AM-02: compliant
+      RULE-ID-AM-03-E: non_compliant
+      RULE-ID-AM-04: not_verifiable
+      RULE-ID-RA-01: not_verifiable
+      RULE-ID-RA-01-E: non_compliant
+      RULE-ID-RA-08: non_compliant
+      RULE-ID-RA-08-E: not_verifiable
+      RULE-PR-AA-01: non_compliant
+      RULE-PR-AA-03: non_compliant
+      RULE-PR-AA-05: non_compliant
+      RULE-PR-AA-06: not_verifiable
+      RULE-PR-DS-01: not_verifiable
+      RULE-PR-DS-02: non_compliant
+      RULE-PR-DS-11: non_compliant
+      RULE-PR-DS-11-E: non_compliant
+      RULE-PR-PS-01-E: non_compliant
+      RULE-PR-PS-02: non_compliant
+      RULE-PR-PS-02-E: non_compliant
+      RULE-PR-PS-03-E: non_compliant
+      RULE-PR-PS-04: non_compliant
+      RULE-PR-IR-01: non_compliant
+      RULE-PR-IR-03-E: non_compliant
+      RULE-DE-CM-01: non_compliant
+      RULE-DE-CM-01-E: non_compliant
+      RULE-DE-CM-09: non_compliant

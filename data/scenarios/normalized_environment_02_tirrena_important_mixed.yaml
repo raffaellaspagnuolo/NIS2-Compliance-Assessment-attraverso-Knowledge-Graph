@@ -1,0 +1,2017 @@
+schema_version: '2.0'
+dataset:
+  id: dataset-tirrena-normalized-2026
+  name: Ambiente normalizzato - Logistica Tirrena
+  generated_at: '2026-08-15T11:37:00+02:00'
+  description: 'Output sintetico dei Moduli 1 e 2 per un''organizzazione importante con controlli tecnici eterogenei: alcune
+    misure mature, altre incomplete o non conformi. Organizzazione, persone e prodotti sono inventati; i riferimenti CVE
+    sono reali e associati a dipendenze sintetiche esclusivamente a scopo dimostrativo.'
+  source_systems:
+  - CMDB
+  - vulnerability-manager
+  - IAM
+  - backup-manager
+  - network-manager
+  - monitoring-platform
+  - configuration-manager
+organization:
+  id: org-tirrena
+  name: Logistica Tirrena S.r.l.
+  nis_profile: important
+  risk_assessment_reference: RISK-TIRRENA-2026-05
+  acn_specification: Determinazione ACN 379907/2025 - specifiche di base vigenti
+responsible_parties:
+- id: owner-tirrena-ops
+  name: Responsabile Sistemi Informativi
+  role: system-owner
+  contact_reference: role://tirrena-system-owner
+  provenance_ids:
+  - prov-governance
+processes:
+- id: proc-tirrena-core
+  name: Piattaforma logistica
+  description: Gestione di ordini, tracciamento spedizioni e coordinamento dei magazzini.
+  criticality: critical
+  asset_ids:
+  - asset-tirrena-core
+  data_object_ids:
+  - data-tirrena-core
+  owner_id: owner-tirrena-ops
+  provenance_ids:
+  - prov-governance
+data_objects:
+- id: data-tirrena-core
+  name: Dati logistici e clienti sintetici
+  classification: confidential
+  description: Categoria sintetica; non contiene dati reali.
+  encrypted_at_rest:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  encrypted_in_transit:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  removable_media:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: false
+    provenance_ids:
+    - prov-config
+  removable_media_encrypted:
+    status: not_applicable
+    value: null
+    provenance_ids:
+    - prov-config
+  encryption_configuration:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: AES-256 managed keys
+    provenance_ids:
+    - prov-config
+  asset_ids:
+  - asset-tirrena-core
+  provenance_ids:
+  - prov-config
+assets:
+- id: asset-tirrena-core
+  name: Logistics Application Server
+  asset_type: server
+  description: Server applicativo centrale per la piattaforma logistica.
+  hostname: app.tirrena.example.invalid
+  ip_addresses:
+  - 198.51.100.41
+  mac_addresses: []
+  environment: production
+  network_segment:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T06:00:00Z'
+    value: business-services
+    provenance_ids:
+    - prov-inventory
+  internet_exposed:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T06:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-inventory
+  nis_relevant:
+    status: known
+    observation_type: declared
+    observed_at: '2026-08-10T09:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-governance
+  criticality: critical
+  impact_level: critical
+  exposure_level: high
+  risk_assessment_reference: RISK-TIRRENA-2026-05
+  lifecycle_status: active
+  operating_system: ExampleLinux
+  operating_system_version: '11.9'
+  support_status: supported
+  owner_id: owner-tirrena-ops
+  process_ids:
+  - proc-tirrena-core
+  data_object_ids:
+  - data-tirrena-core
+  service_ids:
+  - svc-tirrena-https
+  evidence_ids:
+  - ev-tirrena-asset
+  - ev-tirrena-software
+  - ev-tirrena-flow
+  - ev-tirrena-provider
+  - ev-tirrena-scan
+  - ev-tirrena-treatment
+  - ev-tirrena-vulnmanagement
+  - ev-tirrena-accessreview
+  - ev-tirrena-accessconfig
+  - ev-tirrena-physical
+  - ev-tirrena-encryption
+  - ev-tirrena-backup
+  - ev-tirrena-restore
+  - ev-tirrena-system
+  - ev-tirrena-patch
+  - ev-tirrena-maintenance
+  - ev-tirrena-log
+  - ev-tirrena-network
+  - ev-tirrena-emergency
+  - ev-tirrena-monitoring
+  - ev-tirrena-endpoint
+  provenance_ids:
+  - prov-inventory
+  - prov-config
+  - prov-governance
+  properties:
+    hardware_inventory_complete:
+      status: known
+      observation_type: evidence_based
+      observed_at: '2026-08-14T06:00:00Z'
+      value: true
+      provenance_ids:
+      - prov-inventory
+    provider_services_inventory_complete:
+      status: known
+      observation_type: declared
+      observed_at: '2026-08-10T09:00:00Z'
+      value: false
+      provenance_ids:
+      - prov-governance
+    extended_vulnerability_assessment_performed:
+      status: known
+      observation_type: direct
+      observed_at: '2026-08-14T05:00:00Z'
+      value: false
+      provenance_ids:
+      - prov-scan
+    vulnerability_advisories_monitored:
+      status: known
+      observation_type: direct
+      observed_at: '2026-08-14T05:00:00Z'
+      value: false
+      provenance_ids:
+      - prov-scan
+    critical_software_supplier_channels_monitored:
+      status: known
+      observation_type: direct
+      observed_at: '2026-08-14T05:00:00Z'
+      value: false
+      provenance_ids:
+      - prov-scan
+    physical_protection_documented:
+      status: known
+      observation_type: declared
+      observed_at: '2026-08-10T09:00:00Z'
+      value: true
+      provenance_ids:
+      - prov-governance
+    hardening_baseline_applied:
+      status: known
+      observation_type: direct
+      observed_at: '2026-08-14T07:00:00Z'
+      value: false
+      provenance_ids:
+      - prov-config
+    maintenance_logged:
+      status: known
+      observation_type: direct
+      observed_at: '2026-08-14T07:00:00Z'
+      value: false
+      provenance_ids:
+      - prov-config
+    secure_disposal_documented:
+      status: known
+      observation_type: declared
+      observed_at: '2026-08-10T09:00:00Z'
+      value: false
+      provenance_ids:
+      - prov-governance
+    admin_remote_access_logging:
+      status: known
+      observation_type: direct
+      observed_at: '2026-08-14T07:00:00Z'
+      value: true
+      provenance_ids:
+      - prov-config
+    logs_protected:
+      status: known
+      observation_type: direct
+      observed_at: '2026-08-14T07:00:00Z'
+      value: true
+      provenance_ids:
+      - prov-config
+    logs_centralized:
+      status: known
+      observation_type: direct
+      observed_at: '2026-08-14T07:00:00Z'
+      value: false
+      provenance_ids:
+      - prov-config
+    log_retention_within_plan:
+      status: known
+      observation_type: declared
+      observed_at: '2026-08-10T09:00:00Z'
+      value: true
+      provenance_ids:
+      - prov-governance
+    remote_access_registry_complete:
+      status: known
+      observation_type: declared
+      observed_at: '2026-08-10T09:00:00Z'
+      value: true
+      provenance_ids:
+      - prov-governance
+    remote_access_protected:
+      status: known
+      observation_type: direct
+      observed_at: '2026-08-14T07:00:00Z'
+      value: true
+      provenance_ids:
+      - prov-config
+    firewall_enabled:
+      status: known
+      observation_type: direct
+      observed_at: '2026-08-14T07:00:00Z'
+      value: true
+      provenance_ids:
+      - prov-config
+    anomaly_thresholds_configured:
+      status: known
+      observation_type: direct
+      observed_at: '2026-08-14T07:00:00Z'
+      value: false
+      provenance_ids:
+      - prov-config
+- id: asset-tirrena-aux
+  name: Sistema ausiliario fuori perimetro NIS
+  asset_type: database
+  description: Asset rilevato dal Modulo 1 ma escluso dal perimetro tecnico NIS.
+  hostname: aux-tirrena.example.invalid
+  ip_addresses:
+  - 198.51.100.42
+  mac_addresses: []
+  environment: production
+  network_segment:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T06:00:00Z'
+    value: auxiliary
+    provenance_ids:
+    - prov-inventory
+  internet_exposed:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T06:00:00Z'
+    value: false
+    provenance_ids:
+    - prov-inventory
+  nis_relevant:
+    status: known
+    observation_type: declared
+    observed_at: '2026-08-10T09:00:00Z'
+    value: false
+    provenance_ids:
+    - prov-governance
+  criticality: medium
+  impact_level: medium
+  exposure_level: low
+  risk_assessment_reference: RISK-TIRRENA-2026-05
+  lifecycle_status: active
+  support_status: supported
+  owner_id: owner-tirrena-ops
+  process_ids: []
+  data_object_ids: []
+  service_ids: []
+  evidence_ids: []
+  provenance_ids:
+  - prov-inventory
+  - prov-governance
+  properties: {}
+services:
+- id: svc-tirrena-https
+  asset_id: asset-tirrena-core
+  name: HTTPS
+  port: 443
+  protocol: tcp
+  transport_protocol: tcp
+  application_protocol: https
+  product: TirrenaPortal
+  version: '6.2'
+  authorized:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T06:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-inventory
+  internet_exposed:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T06:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-inventory
+  encrypted:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  tls_enabled:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  tls_versions:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value:
+    - TLSv1.2
+    - TLSv1.3
+    provenance_ids:
+    - prov-config
+  certificate_expiration:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: '2027-08-14T00:00:00Z'
+    provenance_ids:
+    - prov-config
+  obsolete_protocol:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: false
+    provenance_ids:
+    - prov-config
+  encryption_configuration:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: TLSv1.2/TLSv1.3
+    provenance_ids:
+    - prov-config
+  cryptographic_baseline_id: CRYPTO-BASELINE-2026.1
+  evidence_ids:
+  - ev-tirrena-encryption
+  provenance_ids:
+  - prov-inventory
+  - prov-config
+software_components:
+- id: software-tirrena-core
+  asset_id: asset-tirrena-core
+  name: TirrenaPortal
+  version:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T06:00:00Z'
+    value: '6.2'
+    provenance_ids:
+    - prov-inventory
+  authorized:
+    status: known
+    observation_type: declared
+    observed_at: '2026-08-10T09:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-governance
+  support_status:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T07:30:00Z'
+    value: supported
+    provenance_ids:
+    - prov-patch
+  security_update_status:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T07:30:00Z'
+    value: overdue_against_risk_plan
+    provenance_ids:
+    - prov-patch
+  last_security_update_at:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T07:30:00Z'
+    value: '2026-06-25T01:00:00Z'
+    provenance_ids:
+    - prov-patch
+  critical_update_tested:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T07:30:00Z'
+    value: true
+    provenance_ids:
+    - prov-patch
+  evidence_ids:
+  - ev-tirrena-software
+  - ev-tirrena-patch
+  provenance_ids:
+  - prov-inventory
+  - prov-patch
+accounts:
+- id: account-tirrena-admin
+  asset_id: asset-tirrena-core
+  account_type: administrator
+  individual:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T07:45:00Z'
+    value: true
+    provenance_ids:
+    - prov-access
+  authorized:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T07:45:00Z'
+    value: true
+    provenance_ids:
+    - prov-access
+  privileged:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T07:45:00Z'
+    value: true
+    provenance_ids:
+    - prov-access
+  remote_access:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T07:45:00Z'
+    value: true
+    provenance_ids:
+    - prov-access
+  mfa_enabled:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T07:45:00Z'
+    value: false
+    provenance_ids:
+    - prov-access
+  credentials_managed:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T07:45:00Z'
+    value: true
+    provenance_ids:
+    - prov-access
+  least_privilege:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T07:45:00Z'
+    value: true
+    provenance_ids:
+    - prov-access
+  separate_admin_account:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T07:45:00Z'
+    value: false
+    provenance_ids:
+    - prov-access
+  last_reviewed_at:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T07:45:00Z'
+    value: '2026-07-28T09:00:00Z'
+    provenance_ids:
+    - prov-access
+  evidence_ids:
+  - ev-tirrena-accessreview
+  - ev-tirrena-accessconfig
+  provenance_ids:
+  - prov-access
+network_flows:
+- id: flow-tirrena-https
+  asset_id: asset-tirrena-core
+  source: internet
+  destination: asset-tirrena-core
+  direction: inbound
+  transport_protocol: tcp
+  application_protocol: https
+  port: 443
+  authorized:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T06:30:00Z'
+    value: true
+    provenance_ids:
+    - prov-network
+  encrypted:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T06:30:00Z'
+    value: true
+    provenance_ids:
+    - prov-network
+  evidence_ids:
+  - ev-tirrena-flow
+  provenance_ids:
+  - prov-network
+backups:
+- id: backup-tirrena-core
+  asset_id: asset-tirrena-core
+  plan_reference: BACKUP-TIRRENA-2026
+  last_success_at:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T03:30:00Z'
+    value: '2026-08-14T23:30:00Z'
+    provenance_ids:
+    - prov-backup
+  frequency_within_plan:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T03:30:00Z'
+    value: true
+    provenance_ids:
+    - prov-backup
+  offline_copy:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T03:30:00Z'
+    value: true
+    provenance_ids:
+    - prov-backup
+  protected_copy:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T03:30:00Z'
+    value: true
+    provenance_ids:
+    - prov-backup
+  restore_test_at:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T03:30:00Z'
+    value: '2026-06-18T08:00:00Z'
+    provenance_ids:
+    - prov-backup
+  restore_test_successful:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T03:30:00Z'
+    value: false
+    provenance_ids:
+    - prov-backup
+  evidence_ids:
+  - ev-tirrena-backup
+  - ev-tirrena-restore
+  provenance_ids:
+  - prov-backup
+security_capabilities:
+- id: cap-tirrena-emergency
+  asset_id: asset-tirrena-core
+  capability_type: emergency_communications
+  enabled:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  configured:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: false
+    provenance_ids:
+    - prov-config
+  maintained:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  monitored:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  evidence_ids:
+  - ev-tirrena-emergency
+  provenance_ids:
+  - prov-config
+  configuration_reference: EMERGENCY-COMMS-TIRRENA-1
+- id: cap-tirrena-ids
+  asset_id: asset-tirrena-core
+  capability_type: intrusion_detection
+  enabled:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  configured:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  maintained:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  monitored:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: false
+    provenance_ids:
+    - prov-config
+  evidence_ids:
+  - ev-tirrena-monitoring
+  provenance_ids:
+  - prov-config
+- id: cap-tirrena-filter
+  asset_id: asset-tirrena-core
+  capability_type: traffic_filter
+  enabled:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  configured:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  maintained:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  monitored:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  evidence_ids:
+  - ev-tirrena-monitoring
+  provenance_ids:
+  - prov-config
+- id: cap-tirrena-access-monitor
+  asset_id: asset-tirrena-core
+  capability_type: access_monitoring
+  enabled:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  configured:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  maintained:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  monitored:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  evidence_ids:
+  - ev-tirrena-monitoring
+  provenance_ids:
+  - prov-config
+- id: cap-tirrena-endpoint
+  asset_id: asset-tirrena-core
+  capability_type: endpoint_protection
+  enabled:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  configured:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  maintained:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  monitored:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T07:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-config
+  evidence_ids:
+  - ev-tirrena-endpoint
+  provenance_ids:
+  - prov-config
+technical_exceptions: []
+vulnerabilities:
+- id: vuln-tirrena-001
+  asset_id: asset-tirrena-core
+  service_id: svc-tirrena-https
+  cve: CVE-2021-41773
+  title: Aggiornamento Apache HTTP Server in attesa di finestra di manutenzione
+  description: Riferimento CVE reale applicato, esclusivamente a scopo dimostrativo, ad Apache HTTP Server 2.4.49 usato dal prodotto sintetico TirrenaPortal.
+  severity: high
+  cvss_score: 7.5
+  component: Apache HTTP Server 2.4.49 usato da TirrenaPortal
+  detected_at: '2026-08-09T05:00:00Z'
+  patch_available:
+    status: known
+    observation_type: direct
+    observed_at: '2026-08-14T05:00:00Z'
+    value: true
+    provenance_ids:
+    - prov-scan
+  remediation_status:
+    status: known
+    observation_type: evidence_based
+    observed_at: '2026-08-14T07:30:00Z'
+    value: in_progress
+    provenance_ids:
+    - prov-patch
+  remediation_due_date: '2026-08-22T23:59:59Z'
+  accepted_exception:
+    status: known
+    observation_type: declared
+    observed_at: '2026-08-10T09:00:00Z'
+    value: false
+    provenance_ids:
+    - prov-governance
+  evidence_ids:
+  - ev-tirrena-scan
+  - ev-tirrena-treatment
+  provenance_ids:
+  - prov-scan
+  - prov-patch
+evidences:
+- id: ev-tirrena-asset
+  evidence_type: asset_inventory
+  title: Inventario asset
+  description: Inventario asset acquisito e normalizzato dai moduli 1 e 2.
+  source: CMDB
+  source_category: asset_internal
+  collected_at: '2026-08-14T08:00:00Z'
+  reliability: high
+  content: {}
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-ID-AM-01
+  provenance_ids:
+  - prov-inventory
+  valid_until: '2026-09-30T23:59:59Z'
+- id: ev-tirrena-software
+  evidence_type: software_inventory
+  title: Inventario software
+  description: Inventario software acquisito e normalizzato dai moduli 1 e 2.
+  source: CMDB
+  source_category: asset_internal
+  collected_at: '2026-08-14T08:00:00Z'
+  valid_until: "2027-12-31T23:59:59Z"
+  reliability: high
+  content: {}
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-ID-AM-02
+  - CTRL-PR-PS-02
+  provenance_ids:
+  - prov-inventory
+- id: ev-tirrena-flow
+  evidence_type: network_flow_inventory
+  title: Inventario flussi di rete
+  description: Inventario flussi di rete acquisito e normalizzato dai moduli 1 e 2.
+  source: network-manager
+  source_category: asset_internal
+  collected_at: '2026-08-14T08:00:00Z'
+  valid_until: "2027-12-31T23:59:59Z"
+  reliability: high
+  content: {}
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-ID-AM-03-E
+  provenance_ids:
+  - prov-network
+- id: ev-tirrena-provider
+  evidence_type: provider_service_inventory
+  title: Inventario servizi fornitori
+  description: Inventario servizi fornitori acquisito e normalizzato dai moduli 1 e 2.
+  source: service-catalog
+  source_category: declared
+  collected_at: '2026-08-14T08:00:00Z'
+  valid_until: "2027-12-31T23:59:59Z"
+  reliability: medium
+  content: {}
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-ID-AM-04
+  provenance_ids:
+  - prov-governance
+- id: ev-tirrena-scan
+  evidence_type: vulnerability_scan
+  title: Scansione vulnerabilità
+  description: Scansione vulnerabilità acquisita e normalizzata dai moduli 1 e 2; il prodotto e l'associazione alla dipendenza sono sintetici.
+  source: vulnerability-scanner
+  source_category: asset_internal
+  collected_at: '2026-08-14T08:00:00Z'
+  reliability: high
+  content:
+    activity_description: Vulnerability assessment autenticato.
+    outcomes: Relazione strutturata dello scenario dimostrativo.
+    vulnerabilities: [vuln-tirrena-001]
+    impact_levels: [high]
+    cve: CVE-2021-41773
+    nvd_url: https://nvd.nist.gov/vuln/detail/CVE-2021-41773
+    synthetic_context: Organizzazione e prodotto sono inventati; il CVE è reale e la sua associazione ad Apache HTTP Server 2.4.49 usato da TirrenaPortal è esclusivamente dimostrativa.
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-ID-RA-01
+  - CTRL-ID-RA-01-E
+  - CTRL-ID-RA-08
+  provenance_ids:
+  - prov-scan
+  valid_until: '2026-09-30T23:59:59Z'
+  vulnerability_ids:
+  - vuln-tirrena-001
+- id: ev-tirrena-treatment
+  evidence_type: vulnerability_treatment
+  title: Registro trattamento vulnerabilità
+  description: Registro trattamento vulnerabilità acquisito e normalizzato dai moduli 1 e 2.
+  source: vulnerability-manager
+  source_category: asset_internal
+  collected_at: '2026-08-14T08:00:00Z'
+  valid_until: "2027-12-31T23:59:59Z"
+  reliability: high
+  content: {}
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-ID-RA-08
+  provenance_ids:
+  - prov-patch
+  vulnerability_ids:
+  - vuln-tirrena-001
+- id: ev-tirrena-vulnmanagement
+  evidence_type: vulnerability_management
+  title: Monitoraggio advisory vulnerabilità
+  description: Monitoraggio advisory vulnerabilità acquisito e normalizzato dai moduli 1 e 2.
+  source: vulnerability-manager
+  source_category: asset_internal
+  collected_at: '2026-08-14T08:00:00Z'
+  valid_until: "2027-12-31T23:59:59Z"
+  reliability: high
+  content: {}
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-ID-RA-01
+  - CTRL-ID-RA-08
+  - CTRL-ID-RA-08-E
+  provenance_ids:
+  - prov-scan
+- id: ev-tirrena-accessreview
+  evidence_type: access_review
+  title: Revisione identità e accessi
+  description: Revisione identità e accessi acquisito e normalizzato dai moduli 1 e 2.
+  source: IAM
+  source_category: asset_internal
+  collected_at: '2026-08-14T08:00:00Z'
+  valid_until: "2027-12-31T23:59:59Z"
+  reliability: high
+  content: {}
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-PR-AA-01
+  provenance_ids:
+  - prov-access
+- id: ev-tirrena-accessconfig
+  evidence_type: access_configuration
+  title: Configurazione MFA e privilegi
+  description: Configurazione MFA e privilegi acquisito e normalizzato dai moduli 1 e 2.
+  source: IAM
+  source_category: asset_internal
+  collected_at: '2026-08-14T08:00:00Z'
+  valid_until: "2027-12-31T23:59:59Z"
+  reliability: high
+  content: {}
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-PR-AA-03
+  - CTRL-PR-AA-05
+  provenance_ids:
+  - prov-access
+- id: ev-tirrena-physical
+  evidence_type: physical_security
+  title: Evidenza protezione fisica
+  description: Evidenza protezione fisica acquisito e normalizzato dai moduli 1 e 2.
+  source: facilities
+  source_category: declared
+  collected_at: '2026-08-14T08:00:00Z'
+  valid_until: "2027-12-31T23:59:59Z"
+  reliability: medium
+  content: {}
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-PR-AA-06
+  provenance_ids:
+  - prov-governance
+- id: ev-tirrena-encryption
+  evidence_type: encryption_configuration
+  title: Configurazione cifratura
+  description: Configurazione cifratura acquisito e normalizzato dai moduli 1 e 2.
+  source: configuration-manager
+  source_category: asset_internal
+  collected_at: '2026-08-14T08:00:00Z'
+  reliability: high
+  content:
+    baseline_id: CRYPTO-BASELINE-2026.1
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-PR-DS-01
+  - CTRL-PR-DS-02
+  provenance_ids:
+  - prov-config
+  valid_until: '2026-09-30T23:59:59Z'
+  service_ids:
+  - svc-tirrena-https
+- id: ev-tirrena-backup
+  evidence_type: backup_record
+  title: Registro backup
+  description: Registro backup acquisito e normalizzato dai moduli 1 e 2.
+  source: backup-manager
+  source_category: asset_internal
+  collected_at: '2026-08-14T08:00:00Z'
+  valid_until: "2027-12-31T23:59:59Z"
+  reliability: high
+  content:
+    plan_reference: BACKUP-TIRRENA-2026
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-PR-DS-11
+  - CTRL-PR-DS-11-E
+  provenance_ids:
+  - prov-backup
+- id: ev-tirrena-restore
+  evidence_type: restore_test
+  title: Test di ripristino
+  description: Test di ripristino acquisito e normalizzato dai moduli 1 e 2.
+  source: backup-manager
+  source_category: asset_internal
+  collected_at: '2026-08-14T08:00:00Z'
+  valid_until: "2027-12-31T23:59:59Z"
+  reliability: high
+  content: {}
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-PR-DS-11-E
+  provenance_ids:
+  - prov-backup
+- id: ev-tirrena-system
+  evidence_type: system_configuration
+  title: Configurazione e hardening
+  description: Configurazione e hardening acquisito e normalizzato dai moduli 1 e 2.
+  source: configuration-manager
+  source_category: asset_internal
+  collected_at: '2026-08-14T08:00:00Z'
+  valid_until: "2027-12-31T23:59:59Z"
+  reliability: high
+  content: {}
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-PR-PS-01-E
+  provenance_ids:
+  - prov-config
+- id: ev-tirrena-patch
+  evidence_type: patch_record
+  title: Registro patching
+  description: Registro patching acquisito e normalizzato dai moduli 1 e 2.
+  source: patch-manager
+  source_category: asset_internal
+  collected_at: '2026-08-14T08:00:00Z'
+  valid_until: "2027-12-31T23:59:59Z"
+  reliability: high
+  content: {}
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-PR-PS-02
+  - CTRL-PR-PS-02-E
+  provenance_ids:
+  - prov-patch
+- id: ev-tirrena-maintenance
+  evidence_type: maintenance_record
+  title: Registro manutenzione
+  description: Registro manutenzione acquisito e normalizzato dai moduli 1 e 2.
+  source: configuration-manager
+  source_category: asset_internal
+  collected_at: '2026-08-14T08:00:00Z'
+  valid_until: "2027-12-31T23:59:59Z"
+  reliability: high
+  content: {}
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-PR-PS-03-E
+  provenance_ids:
+  - prov-config
+- id: ev-tirrena-log
+  evidence_type: log_configuration
+  title: Configurazione logging
+  description: Configurazione logging acquisito e normalizzato dai moduli 1 e 2.
+  source: logging-platform
+  source_category: asset_internal
+  collected_at: '2026-08-14T08:00:00Z'
+  valid_until: "2027-12-31T23:59:59Z"
+  reliability: high
+  content: {}
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-PR-PS-04
+  provenance_ids:
+  - prov-config
+- id: ev-tirrena-network
+  evidence_type: network_security
+  title: Configurazione accessi remoti e firewall
+  description: Configurazione accessi remoti e firewall acquisito e normalizzato dai moduli 1 e 2.
+  source: network-manager
+  source_category: asset_internal
+  collected_at: '2026-08-14T08:00:00Z'
+  valid_until: "2027-12-31T23:59:59Z"
+  reliability: high
+  content: {}
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-PR-IR-01
+  provenance_ids:
+  - prov-network
+- id: ev-tirrena-emergency
+  evidence_type: emergency_communications
+  title: Comunicazioni di emergenza
+  description: Comunicazioni di emergenza acquisito e normalizzato dai moduli 1 e 2.
+  source: crisis-platform
+  source_category: asset_internal
+  collected_at: '2026-08-14T08:00:00Z'
+  valid_until: "2027-12-31T23:59:59Z"
+  reliability: high
+  content: {}
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-PR-IR-03-E
+  provenance_ids:
+  - prov-config
+- id: ev-tirrena-monitoring
+  evidence_type: monitoring_configuration
+  title: Configurazione monitoraggio
+  description: Configurazione monitoraggio acquisito e normalizzato dai moduli 1 e 2.
+  source: monitoring-platform
+  source_category: asset_internal
+  collected_at: '2026-08-14T08:00:00Z'
+  valid_until: "2027-12-31T23:59:59Z"
+  reliability: high
+  content: {}
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-DE-CM-01
+  - CTRL-DE-CM-01-E
+  provenance_ids:
+  - prov-config
+- id: ev-tirrena-endpoint
+  evidence_type: endpoint_protection
+  title: Protezione endpoint
+  description: Protezione endpoint acquisito e normalizzato dai moduli 1 e 2.
+  source: endpoint-platform
+  source_category: asset_internal
+  collected_at: '2026-08-14T08:00:00Z'
+  valid_until: "2027-12-31T23:59:59Z"
+  reliability: high
+  content: {}
+  asset_ids:
+  - asset-tirrena-core
+  control_ids:
+  - CTRL-DE-CM-09
+  provenance_ids:
+  - prov-config
+requirements: []
+controls:
+- id: CTRL-ID-AM-01
+  requirement_id: REQ-ID-AM-01
+  title: Inventario hardware
+  description: Controllo tecnico normalizzato per inventario hardware.
+  technical_area: asset_management
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - asset.hardware_inventory_complete
+  required_evidence_types:
+  - asset_inventory
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-ID-AM-01
+- id: CTRL-ID-AM-02
+  requirement_id: REQ-ID-AM-02
+  title: Inventario software e servizi
+  description: Controllo tecnico normalizzato per inventario software e servizi.
+  technical_area: asset_management
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - software_component.version
+  - software_component.authorized
+  required_evidence_types:
+  - software_inventory
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-ID-AM-02
+- id: CTRL-ID-AM-03-E
+  requirement_id: REQ-ID-AM-03-E
+  title: Inventario dei flussi di rete
+  description: Controllo tecnico normalizzato per inventario dei flussi di rete.
+  technical_area: asset_management
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - network_flow.authorized
+  required_evidence_types:
+  - network_flow_inventory
+  applicable_profiles:
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-ID-AM-03-E
+- id: CTRL-ID-AM-04
+  requirement_id: REQ-ID-AM-04
+  title: Servizi dei fornitori
+  description: Controllo tecnico normalizzato per servizi dei fornitori.
+  technical_area: supply_chain_technical
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - asset.provider_services_inventory_complete
+  required_evidence_types:
+  - provider_service_inventory
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: evidence_assisted
+  rule_ids:
+  - RULE-ID-AM-04
+- id: CTRL-ID-RA-01
+  requirement_id: REQ-ID-RA-01
+  title: Valutazione delle vulnerabilità
+  description: Controllo tecnico normalizzato per valutazione delle vulnerabilità.
+  technical_area: vulnerability_management
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - asset.vulnerability_advisories_monitored
+  required_evidence_types:
+  - vulnerability_management
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-ID-RA-01
+- id: CTRL-ID-RA-01-E
+  requirement_id: REQ-ID-RA-01-E
+  title: Assessment approfondito delle vulnerabilità
+  description: Controllo tecnico normalizzato per assessment approfondito delle vulnerabilità.
+  technical_area: vulnerability_management
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - asset.extended_vulnerability_assessment_performed
+  required_evidence_types:
+  - vulnerability_scan
+  applicable_profiles:
+  - essential
+  relevant_system_required: true
+  verification_mode: evidence_assisted
+  rule_ids:
+  - RULE-ID-RA-01-E
+- id: CTRL-ID-RA-08
+  requirement_id: REQ-ID-RA-08
+  title: Trattamento delle vulnerabilità
+  description: Controllo tecnico normalizzato per trattamento delle vulnerabilità.
+  technical_area: vulnerability_management
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - asset.vulnerability_advisories_monitored
+  - vulnerability.remediation_status
+  required_evidence_types:
+  - vulnerability_management
+  - vulnerability_treatment
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-ID-RA-08
+- id: CTRL-ID-RA-08-E
+  requirement_id: REQ-ID-RA-08-E
+  title: Monitoraggio avanzato delle vulnerabilità
+  description: Controllo tecnico normalizzato per monitoraggio avanzato delle vulnerabilità.
+  technical_area: vulnerability_management
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - asset.critical_software_supplier_channels_monitored
+  required_evidence_types:
+  - vulnerability_management
+  applicable_profiles:
+  - essential
+  relevant_system_required: true
+  verification_mode: evidence_assisted
+  rule_ids:
+  - RULE-ID-RA-08-E
+- id: CTRL-PR-AA-01
+  requirement_id: REQ-PR-AA-01
+  title: Identità e credenziali
+  description: Controllo tecnico normalizzato per identità e credenziali.
+  technical_area: access_control
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - account.individual
+  - account.authorized
+  - account.credentials_managed
+  required_evidence_types:
+  - access_review
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-PR-AA-01
+- id: CTRL-PR-AA-03
+  requirement_id: REQ-PR-AA-03
+  title: Autenticazione e MFA
+  description: Controllo tecnico normalizzato per autenticazione e mfa.
+  technical_area: access_control
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - account.mfa_enabled
+  required_evidence_types:
+  - access_configuration
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-PR-AA-03
+- id: CTRL-PR-AA-05
+  requirement_id: REQ-PR-AA-05
+  title: Minimo privilegio e account amministrativi
+  description: Controllo tecnico normalizzato per minimo privilegio e account amministrativi.
+  technical_area: access_control
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - account.least_privilege
+  - account.separate_admin_account
+  required_evidence_types:
+  - access_configuration
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-PR-AA-05
+- id: CTRL-PR-AA-06
+  requirement_id: REQ-PR-AA-06
+  title: Protezione fisica
+  description: Controllo tecnico normalizzato per protezione fisica.
+  technical_area: physical_security
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - asset.physical_protection_documented
+  required_evidence_types:
+  - physical_security
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: evidence_assisted
+  rule_ids:
+  - RULE-PR-AA-06
+- id: CTRL-PR-DS-01
+  requirement_id: REQ-PR-DS-01
+  title: Protezione dei dati a riposo
+  description: Controllo tecnico normalizzato per protezione dei dati a riposo.
+  technical_area: data_protection
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties: []
+  required_evidence_types:
+  - encryption_configuration
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-PR-DS-01
+- id: CTRL-PR-DS-02
+  requirement_id: REQ-PR-DS-02
+  title: Protezione dei dati in transito
+  description: Controllo tecnico normalizzato per protezione dei dati in transito.
+  technical_area: cryptography
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - service.encrypted
+  - service.tls_enabled
+  - service.tls_versions
+  required_evidence_types:
+  - encryption_configuration
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-PR-DS-02
+- id: CTRL-PR-DS-11
+  requirement_id: REQ-PR-DS-11
+  title: Backup e ripristino
+  description: Controllo tecnico normalizzato per backup e ripristino.
+  technical_area: backup_recovery
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - backup.frequency_within_plan
+  - backup.offline_copy
+  required_evidence_types:
+  - backup_record
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-PR-DS-11
+- id: CTRL-PR-DS-11-E
+  requirement_id: REQ-PR-DS-11-E
+  title: Separazione delle copie di backup
+  description: Controllo tecnico normalizzato per separazione delle copie di backup.
+  technical_area: backup_recovery
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - backup.protected_copy
+  - backup.restore_test_successful
+  required_evidence_types:
+  - backup_record
+  - restore_test
+  applicable_profiles:
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-PR-DS-11-E
+- id: CTRL-PR-PS-01-E
+  requirement_id: REQ-PR-PS-01-E
+  title: Baseline di hardening
+  description: Controllo tecnico normalizzato per baseline di hardening.
+  technical_area: system_security
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - asset.hardening_baseline_applied
+  required_evidence_types:
+  - system_configuration
+  applicable_profiles:
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-PR-PS-01-E
+- id: CTRL-PR-PS-02
+  requirement_id: REQ-PR-PS-02
+  title: Software supportato e aggiornato
+  description: Controllo tecnico normalizzato per software supportato e aggiornato.
+  technical_area: patch_management
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - software_component.support_status
+  - software_component.security_update_status
+  required_evidence_types:
+  - software_inventory
+  - patch_record
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-PR-PS-02
+- id: CTRL-PR-PS-02-E
+  requirement_id: REQ-PR-PS-02-E
+  title: Test degli aggiornamenti critici
+  description: Controllo tecnico normalizzato per test degli aggiornamenti critici.
+  technical_area: patch_management
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - software_component.support_status
+  - software_component.security_update_status
+  - software_component.critical_update_tested
+  required_evidence_types:
+  - patch_record
+  applicable_profiles:
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-PR-PS-02-E
+- id: CTRL-PR-PS-03-E
+  requirement_id: REQ-PR-PS-03-E
+  title: Manutenzione e dismissione sicura
+  description: Controllo tecnico normalizzato per manutenzione e dismissione sicura.
+  technical_area: system_security
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - asset.maintenance_logged
+  - asset.secure_disposal_documented
+  required_evidence_types:
+  - maintenance_record
+  applicable_profiles:
+  - essential
+  relevant_system_required: true
+  verification_mode: evidence_assisted
+  rule_ids:
+  - RULE-PR-PS-03-E
+- id: CTRL-PR-PS-04
+  requirement_id: REQ-PR-PS-04
+  title: Logging di sicurezza
+  description: Controllo tecnico normalizzato per logging di sicurezza.
+  technical_area: logging_monitoring
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - asset.admin_remote_access_logging
+  - asset.logs_protected
+  - asset.logs_centralized
+  - asset.log_retention_within_plan
+  required_evidence_types:
+  - log_configuration
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-PR-PS-04
+- id: CTRL-PR-IR-01
+  requirement_id: REQ-PR-IR-01
+  title: Accesso remoto e firewall
+  description: Controllo tecnico normalizzato per accesso remoto e firewall.
+  technical_area: network_security
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - asset.remote_access_registry_complete
+  - asset.remote_access_protected
+  - asset.firewall_enabled
+  required_evidence_types:
+  - network_security
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-PR-IR-01
+- id: CTRL-PR-IR-03-E
+  requirement_id: REQ-PR-IR-03-E
+  title: Comunicazioni di emergenza protette
+  description: Controllo tecnico normalizzato per comunicazioni di emergenza protette.
+  technical_area: emergency_communications
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - security_capability.enabled
+  - security_capability.configured
+  - security_capability.maintained
+  required_evidence_types:
+  - emergency_communications
+  applicable_profiles:
+  - essential
+  relevant_system_required: true
+  verification_mode: evidence_assisted
+  rule_ids:
+  - RULE-PR-IR-03-E
+- id: CTRL-DE-CM-01
+  requirement_id: REQ-DE-CM-01
+  title: Monitoraggio di rete e accessi
+  description: Controllo tecnico normalizzato per monitoraggio di rete e accessi.
+  technical_area: security_monitoring
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - security_capability.enabled
+  - security_capability.configured
+  - security_capability.monitored
+  required_evidence_types:
+  - monitoring_configuration
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-DE-CM-01
+- id: CTRL-DE-CM-01-E
+  requirement_id: REQ-DE-CM-01-E
+  title: Monitoraggio avanzato
+  description: Controllo tecnico normalizzato per monitoraggio avanzato.
+  technical_area: security_monitoring
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - asset.anomaly_thresholds_configured
+  required_evidence_types:
+  - monitoring_configuration
+  applicable_profiles:
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-DE-CM-01-E
+- id: CTRL-DE-CM-09
+  requirement_id: REQ-DE-CM-09
+  title: Protezione endpoint
+  description: Controllo tecnico normalizzato per protezione endpoint.
+  technical_area: endpoint_security
+  applicable_asset_types:
+  - server
+  - workstation
+  - network_device
+  - application
+  - database
+  - cloud_service
+  - storage
+  - virtual_machine
+  - container_host
+  - security_device
+  - other
+  required_properties:
+  - security_capability.enabled
+  - security_capability.configured
+  - security_capability.maintained
+  - security_capability.monitored
+  required_evidence_types:
+  - endpoint_protection
+  applicable_profiles:
+  - important
+  - essential
+  relevant_system_required: true
+  verification_mode: automatic
+  rule_ids:
+  - RULE-DE-CM-09
+relationships:
+- id: rel-tirrena-asset-service
+  subject_id: asset-tirrena-core
+  predicate: EXPOSES
+  object_id: svc-tirrena-https
+  provenance_ids:
+  - prov-inventory
+- id: rel-tirrena-asset-data
+  subject_id: asset-tirrena-core
+  predicate: PROCESSES
+  object_id: data-tirrena-core
+  provenance_ids:
+  - prov-inventory
+- id: rel-tirrena-asset-owner
+  subject_id: asset-tirrena-core
+  predicate: MANAGED_BY
+  object_id: owner-tirrena-ops
+  provenance_ids:
+  - prov-governance
+- id: rel-tirrena-vulnerability-asset
+  subject_id: vuln-tirrena-001
+  predicate: AFFECTS
+  object_id: asset-tirrena-core
+  provenance_ids:
+  - prov-scan
+- id: rel-tirrena-capability-asset
+  subject_id: asset-tirrena-core
+  predicate: PROTECTED_BY
+  object_id: cap-tirrena-endpoint
+  provenance_ids:
+  - prov-config
+- id: rel-tirrena-process-asset
+  subject_id: proc-tirrena-core
+  predicate: DEPENDS_ON
+  object_id: asset-tirrena-core
+  provenance_ids:
+  - prov-governance
+provenance_records:
+- id: prov-inventory
+  source: CMDB
+  source_type: inventory
+  source_category: asset_internal
+  collected_at: '2026-08-14T06:00:00Z'
+  method: export autenticato
+  reliability: high
+- id: prov-config
+  source: configuration-manager
+  source_type: configuration
+  source_category: asset_internal
+  collected_at: '2026-08-14T07:00:00Z'
+  method: raccolta automatizzata
+  reliability: high
+- id: prov-governance
+  source: registro governance
+  source_type: declaration
+  source_category: declared
+  collected_at: '2026-08-10T09:00:00Z'
+  method: dichiarazione approvata
+  reliability: medium
+- id: prov-scan
+  source: vulnerability-scanner
+  source_type: scan
+  source_category: asset_internal
+  collected_at: '2026-08-14T05:00:00Z'
+  method: scansione autenticata
+  reliability: high
+- id: prov-patch
+  source: patch-manager
+  source_type: patching
+  source_category: asset_internal
+  collected_at: '2026-08-14T07:30:00Z'
+  method: export stato
+  reliability: high
+- id: prov-access
+  source: IAM
+  source_type: identity
+  source_category: asset_internal
+  collected_at: '2026-08-14T07:45:00Z'
+  method: export utenze
+  reliability: high
+- id: prov-network
+  source: network-manager
+  source_type: network
+  source_category: asset_internal
+  collected_at: '2026-08-14T06:30:00Z'
+  method: export configurazione
+  reliability: high
+- id: prov-backup
+  source: backup-manager
+  source_type: backup
+  source_category: asset_internal
+  collected_at: '2026-08-14T03:30:00Z'
+  method: export job e test
+  reliability: high

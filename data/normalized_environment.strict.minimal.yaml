@@ -1,0 +1,100 @@
+schema_version: "2.0"
+
+dataset:
+  id: dataset-strict-minimal-001
+  name: Ambiente normalizzato minimale
+  generated_at: "2026-08-17T12:00:00+02:00"
+  description: Esempio minimale di output normalizzato prodotto dai Moduli 1-2.
+  source_systems:
+    - simulatore-moduli-1-2
+
+organization:
+  id: org-example
+  name: Organizzazione di esempio
+  nis_profile: important
+  risk_assessment_reference: RISK-EXAMPLE-2026-01
+  acn_specification: Specifiche di base ACN applicabili
+
+responsible_parties: []
+processes: []
+data_objects: []
+
+assets:
+  - id: asset-example-web
+    name: Server web di esempio
+    asset_type: server
+    description: Asset sintetico usato per mostrare il contratto strict.
+    hostname: web.example.invalid
+    ip_addresses:
+      - 192.0.2.10
+    mac_addresses: []
+    environment: production
+
+    # Valore conosciuto: observation_type è obbligatorio.
+    network_segment:
+      status: known
+      value: dmz
+      observation_type: declared
+      observed_at: "2026-08-17T11:45:00+02:00"
+      provenance_ids:
+        - prov-manual
+
+    # false è un valore conosciuto e non equivale a unknown.
+    internet_exposed:
+      status: known
+      value: false
+      observation_type: direct
+      observed_at: "2026-08-17T11:50:00+02:00"
+      provenance_ids:
+        - prov-manual
+
+    # Valore ignoto: unknown_cause è obbligatorio.
+    nis_relevant:
+      status: unknown
+      value: null
+      unknown_cause: not_declared
+      provenance_ids: []
+
+    criticality: medium
+    impact_level: medium
+    exposure_level: low
+    risk_assessment_reference: RISK-EXAMPLE-2026-01
+    lifecycle_status: active
+    operating_system: ExampleLinux
+    operating_system_version: "1.0"
+    support_status: supported
+    owner_id: null
+    process_ids: []
+    data_object_ids: []
+    service_ids: []
+    evidence_ids: []
+    provenance_ids:
+      - prov-manual
+    properties: {}
+
+services: []
+software_components: []
+accounts: []
+network_interfaces: []
+network_flows: []
+backups: []
+security_capabilities: []
+technical_exceptions: []
+vulnerabilities: []
+evidences: []
+requirements: []
+controls: []
+relationships: []
+
+provenance_records:
+  - id: prov-manual
+    source: simulatore-moduli-1-2
+    source_type: normalized_declaration
+    source_category: declared
+    collected_at: "2026-08-17T11:50:00+02:00"
+    method: compilazione manuale controllata
+    reliability: medium
+    original_reference: null
+    notes: Dati completamente sintetici.
+
+inventory_states: []

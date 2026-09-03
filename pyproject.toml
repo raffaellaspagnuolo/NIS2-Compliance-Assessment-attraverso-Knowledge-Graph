@@ -1,0 +1,42 @@
+# Configurazione unica di packaging, dipendenze e strumenti di qualità.
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+# Nome usato dal pacchetto installabile e dalla CLI.
+name = "nis2-asset-technical-checker"
+version = "0.4.0"
+description = "Asset-centric checker for observable and reproducible NIS2-related technical controls"
+requires-python = ">=3.12"
+dependencies = ["pydantic>=2.8,<3", "neo4j>=5.27,<7", "fastapi>=0.115,<1", "typer>=0.12,<1", "PyYAML>=6,<7", "uvicorn>=0.30,<1"]
+
+[project.optional-dependencies]
+dev = ["ruff>=0.8,<1", "mypy>=1.13,<2", "types-PyYAML>=6"]
+
+[project.scripts]
+# Espone il gruppo di comandi Typer dopo `pip install -e .`.
+nis2-assessor = "nis2_assessor.cli:app"
+# Nome principale coerente con il perimetro normativo consolidato.
+nis2-checker = "nis2_assessor.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/nis2_assessor"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+# Regole di stile, import, modernizzazione Python e bug comuni.
+select = ["E", "F", "I", "UP", "B"]
+# La lunghezza delle righe non incide sulla correttezza; B008 è incompatibile
+# con il pattern dichiarativo ufficiale di Typer. UP046 richiederebbe invece
+# Python 3.12 esclusivo anche nella sintassi pubblica dei modelli generici.
+ignore = ["E501", "B008", "UP046"]
+
+[tool.mypy]
+# Il controllo statico è intenzionalmente rigoroso sul codice applicativo.
+python_version = "3.12"
+strict = true
+plugins = ["pydantic.mypy"]
